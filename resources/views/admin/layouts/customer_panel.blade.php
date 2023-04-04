@@ -4,7 +4,7 @@
       <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
       <!--[if lt IE 10]>
-        <script src="{{ asset('dist/js/respond.min.js') }}"></script>
+        <script src="{{ asset('public/dist/js/respond.min.js') }}"></script>
       <![endif]-->
       <!-- Meta -->
       <meta charset="utf-8">
@@ -20,16 +20,16 @@
       @endif
 
       <!-- fontawesome icon -->
-      <link rel="stylesheet" href="{{ asset('datta-able/fonts/fontawesome/css/fontawesome-all.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('public/datta-able/fonts/fontawesome/css/fontawesome-all.min.css') }}">
       <!-- material icon -->
-      <link rel="stylesheet" href="{{ asset('datta-able/fonts/material/css/materialdesignicons.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('public/datta-able/fonts/material/css/materialdesignicons.min.css') }}">
       <!-- flaq icon -->
-      <link rel="stylesheet" href="{{ asset('datta-able/fonts/flag/css/flag-icon.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('public/datta-able/fonts/flag/css/flag-icon.min.css') }}">
       <!-- animation css -->
-      <link rel="stylesheet" href="{{ asset('datta-able/plugins/animation/css/animate.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('public/datta-able/plugins/animation/css/animate.min.css') }}">
       <!-- vendor css -->
-      <link rel="stylesheet" href="{{ asset('datta-able/css/style.min.css') }}">
-      <link rel="stylesheet" href="{{ asset('dist/css/custom.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('public/datta-able/css/style.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('public/dist/css/custom.min.css') }}">
 
       <!--Custom CSS that was written on view-->
       @yield('css')
@@ -38,7 +38,7 @@
       @php
         if (\Cache::get(config('cache.prefix') . '-language-direction') == 'rtl') {
       @endphp
-          <link rel="stylesheet" href="{{ asset('datta-able/css/layouts/rtl.min.css') }}">
+          <link rel="stylesheet" href="{{ asset('public/datta-able/css/layouts/rtl.min.css') }}">
       @php } @endphp
 
       <script type="text/javascript">
@@ -127,18 +127,18 @@
       </div>
 
       <!-- Required Js -->
-      <script src="{{ asset('datta-able/js/pcoded.min.js') }}"></script>
-      <script src="{{ asset('datta-able/plugins/select2/js/select2.full.min.js') }}"></script>
+      <script src="{{ asset('public/datta-able/js/pcoded.min.js') }}"></script>
+      <script src="{{ asset('public/datta-able/plugins/select2/js/select2.full.min.js') }}"></script>
 
-      <script src="{{ asset('dist/js/moment.min.js') }}"></script>
-      <script src="{{ asset('dist/plugins/bootstrap-daterangepicker/daterangepicker.min.js') }}"></script>
+      <script src="{{ asset('public/dist/js/moment.min.js') }}"></script>
+      <script src="{{ asset('public/dist/plugins/bootstrap-daterangepicker/daterangepicker.min.js') }}"></script>
       <!-- Custom Js -->
       <script type="text/javascript">
         'use strict';
         var startDate = "{!! isset($from) ? $from : 'undefined' !!}";
         var endDate   = "{!! isset($to) ? $to : 'undefined' !!}";
         </script>
-      <script src="{{ asset('dist/js/custom/customer-panel.min.js') }}"></script>
+      <script src="{{ asset('public/dist/js/custom/customer-panel.min.js') }}"></script>
       @yield('js')
   </body>
 
