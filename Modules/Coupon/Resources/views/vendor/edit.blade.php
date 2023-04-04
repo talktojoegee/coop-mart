@@ -1,7 +1,7 @@
 @extends('vendor.layouts.app')
 @section('page_title', __('Edit Coupon'))
 @section('css')
-<link rel="stylesheet" href="{{ asset('public/dist/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}">
+<link rel="stylesheet" href="{{ asset('dist/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}">
 @endsection
 
 @section('content')
@@ -227,11 +227,11 @@
 
 </script>
 
-<script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
-<script src="{{ asset('public/dist/js/condition.min.js') }}"></script>
+<script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
+<script src="{{ asset('dist/js/condition.min.js') }}"></script>
 <!-- date range picker Js -->
-<script src="{{ asset('public/dist/js/moment.min.js') }}"></script>
-<script src="{{ asset('public/dist/plugins/bootstrap-daterangepicker/daterangepicker.min.js') }}"></script>
-<script src="{{ asset('public/dist/js/custom/coupon.min.js') }}"></script>
+<script src="{{ asset('dist/js/moment.min.js') }}"></script>
+<script src="{{ asset('dist/plugins/bootstrap-daterangepicker/daterangepicker.min.js') }}"></script>
+<script src="{{ asset('dist/js/custom/coupon.min.js') }}"></script>
 
 @endsection

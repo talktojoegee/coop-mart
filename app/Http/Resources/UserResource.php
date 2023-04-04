@@ -19,10 +19,10 @@ class UserResource extends JsonResource
      */
     public function toArray($request)
     {
-        $pictureURL  = url("public/dist/img/avatar.jpg");
+        $pictureURL  = url("dist/img/avatar.jpg");
         $pictureName = "avatar.jpg";
-        if (isset($this->avatarFile->file_name) && !empty($this->avatarFile->file_name) && file_exists('public/uploads/user/thumbnail/' . $this->avatarFile->file_name)) {
-            $pictureURL  = url("public/uploads/user/thumbnail/" . $this->avatarFile->file_name);
+        if (isset($this->avatarFile->file_name) && !empty($this->avatarFile->file_name) && file_exists('uploads/user/thumbnail/' . $this->avatarFile->file_name)) {
+            $pictureURL  = url("uploads/user/thumbnail/" . $this->avatarFile->file_name);
             $pictureName = $this->avatarFile->file_name;
         }
         return [

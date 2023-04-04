@@ -1,0 +1,13 @@
+{
+    "name": "ThankYou",
+    "alias": "thankyou",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ThankYou\\Providers\\ThankYouServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

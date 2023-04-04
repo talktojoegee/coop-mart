@@ -2,11 +2,11 @@
 @section('page_title', __('Conversation'))
 @section('css')
     <link rel="stylesheet" href="{{ asset('datta-able/plugins/summer-note/summernote-lite.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('Modules/Ticket/Resources/assets/css/ticket-reply.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('Modules/Ticket/Resources/assets/css/jqueryui.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('Modules/Ticket/Resources/assets/css/custom-badges.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('Modules/Ticket/Resources/assets/css/invoice-style.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
+    <link rel="stylesheet" href="{{ Module::asset('ticket:css/ticket-reply.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ Module::asset('ticket:css/jqueryui.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ Module::asset('ticket:css/custom-badges.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ Module::asset('ticket:css/invoice-style.min.css') }}">
+    <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
 
 @endsection
 @section('content')
@@ -296,6 +296,6 @@
 @section('js')
     <script src="{{ asset('datta-able/plugins/summer-note/summernote-lite.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('dist/js/html5lightbox/html5lightbox.min.js') }}"></script>
-    <script src="{{ asset('Modules/Ticket/Resources/assets/js/message.min.js') }}"></script>
+    <script src="{{ Module::asset('ticket:js/message.min.js') }}"></script>
     {!! translateValidationMessages() !!}
 @endsection

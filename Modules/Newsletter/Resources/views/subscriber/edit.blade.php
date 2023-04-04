@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 @section('page_title', __('Edit Subscriber'))
 @section('css')
-  <link rel="stylesheet" href="{{ asset('public/dist/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('dist/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}">
 @endsection
 
 @section('content')
@@ -64,8 +64,8 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('public/dist/js/moment.min.js') }}"></script>
-    <script src="{{ asset('public/dist/plugins/bootstrap-daterangepicker/daterangepicker.min.js') }}"></script>
-    <script src="{{ asset('public/dist/js/custom/newsletter.min.js') }}"></script>
-    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('dist/js/moment.min.js') }}"></script>
+    <script src="{{ asset('dist/plugins/bootstrap-daterangepicker/daterangepicker.min.js') }}"></script>
+    <script src="{{ asset('dist/js/custom/newsletter.min.js') }}"></script>
+    <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
 @endsection

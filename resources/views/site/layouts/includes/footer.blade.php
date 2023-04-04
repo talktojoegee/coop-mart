@@ -257,7 +257,7 @@
                                         @if (!empty($data['link']))
                                             <a href="{{ $data['link'] }}" title="Youtube" target="_blank"
                                                 class="primary-bg-hover hover:text-gray-800 text-white flex items-center justify-center w-8 h-8 bg-gray-3 rounded-full social-transition">
-                                                <img class="social-icon" src="{{ asset('Modules/CMS/Resources/views/partials/themes/footer/svg/' . $data['label']) . '.svg' }}" alt="{{ __('Image') }}">
+                                                <img class="social-icon" src="{{ Module::asset('cms:views/partials/themes/footer/svg/' . $data['label']) . '.svg' }}" alt="{{ __('Image') }}">
                                             </a>
                                         @endif
                                     @endforeach

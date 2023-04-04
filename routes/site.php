@@ -25,6 +25,7 @@ Route::group(['middleware' => ['locale']], function () {
     Route::post('review/pagination/fetch', 'SiteController@fetch')->name('fetch.review');
     Route::post('change-language', 'DashboardController@switchLanguage');
 
+    Route::get('shops', 'SiteController@showShops')->name('site.shops');
     Route::get('shop/{alias}', 'SellerController@index')->name('site.shop');
     Route::get('shop/profile/{alias}', 'SellerController@vendorProfile')->name('site.shop.profile');
 

@@ -2,7 +2,7 @@
 @section('page_title', __('Create :x', ['x' => __('Vendor')]))
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
+    <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
 @endsection
 
 @section('content')
@@ -282,6 +282,6 @@
         var currentUrl = "{!! url()->full() !!}";
         var loginNeeded = "{!! session('loginRequired') ? 1 : 0 !!}";
     </script>
-    <script src="{{ asset('public/dist/js/custom/vendors.min.js') }}"></script>
-    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('dist/js/custom/vendors.min.js') }}"></script>
+    <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
 @endsection

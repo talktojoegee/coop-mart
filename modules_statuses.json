@@ -33,5 +33,6 @@
     "AuthorizeNet": true,
     "DirectBankTransfer": true,
     "CheckPayments": true,
-    "NGenius": true
+    "NGenius": true,
+    "ThankYou": true
 }

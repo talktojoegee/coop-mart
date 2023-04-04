@@ -348,7 +348,7 @@ class Vendor extends Model
             if ($totalVendorProducts > 0) {
                 return round(($onTimeProducts * 100) / $totalVendorProducts);
             }
-            
+
             return 100;
         }
     }
@@ -392,5 +392,10 @@ class Vendor extends Model
             return true;
         }
         return false;
+    }
+
+
+    public function getVendors(){
+        return Vendor::orderBy('name', 'ASC')->get();
     }
 }

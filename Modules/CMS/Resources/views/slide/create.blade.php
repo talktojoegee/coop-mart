@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 @section('page_title', __('Slide'))
 @section('css')
-    <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
+    <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/plugins/lightbox/css/lightbox.min.css') }}">
 
     {{-- Color picker --}}
@@ -111,5 +111,5 @@
     <!-- minicolors Js -->
     <script src="{{ asset('datta-able/plugins/mini-color/js/jquery.minicolors.min.js') }}"></script>
 
-    <script src="{{ asset('Modules/CMS/Resources/assets/js/slider.min.js') }}"></script>
+    <script src="{{ Module::asset('cms:js/slider.min.js') }}"></script>
 @endsection

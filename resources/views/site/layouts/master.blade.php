@@ -47,7 +47,7 @@
     <link rel="stylesheet" href="{{ asset('dist/css/site_custom.min.css') }}">
 
     <!-- User define custom dynamic css file -->
-    <link rel="stylesheet" href="{{ asset('Modules/CMS/Resources/assets/css/user-custom.css?v=' . time()) }}">
+    <link rel="stylesheet" href="{{ Module::asset('cms:css/user-custom.css?v=' . time()) }}">
 
     <script type="text/javascript">
         'use strict';
@@ -167,7 +167,7 @@
     @yield('parent-js')
 
     <!-- User define custom dynamic js file -->
-    <script src="{{ asset('Modules/CMS/Resources/assets/js/user-custom.js?v=' . time()) }}"></script>
+    <script src="{{ Module::asset('cms:js/user-custom.js?v=' . time()) }}"></script>
 </body>
 
 </html>

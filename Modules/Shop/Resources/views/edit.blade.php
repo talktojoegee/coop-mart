@@ -3,7 +3,7 @@
 @section('css')
     {{-- Select2  --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('datta-able/plugins/select2/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
+    <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
 @endsection
 
 @section('content')

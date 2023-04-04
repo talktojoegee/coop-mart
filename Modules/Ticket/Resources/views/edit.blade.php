@@ -125,5 +125,5 @@
 <script src="{{ asset('dist/js/jquery.validate.min.js')}}"></script>
 <script src="{{ asset('datta-able/plugins/select2/js/select2.full.min.js')}}"></script>
 {!! translateValidationMessages() !!}
-<script src="{{ asset('Modules/Ticket/Resources/assets/js/message.min.js') }}"></script>
+<script src="{{ Module::asset('ticket:js/message.min.js') }}"></script>
 @endsection

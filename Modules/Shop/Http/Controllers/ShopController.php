@@ -12,9 +12,13 @@ use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
+
+    public function __construct(){
+        $this->shop = new Shop();
+    }
     /**
      * List All Shop
-     * 
+     *
      * @param  ShopDataTable $dataTable
      * @return \Illuminate\Contracts\View\View
      */
@@ -25,7 +29,7 @@ class ShopController extends Controller
 
     /**
      * Create Shop
-     * 
+     *
      * @return \Illuminate\Contracts\View\View
      */
     public function create(Request $request)
@@ -37,7 +41,7 @@ class ShopController extends Controller
 
     /**
      * Store Shop
-     * 
+     *
      * @param Request $request
      * @return \Illuminate\Routing\Redirector
      */
@@ -66,7 +70,7 @@ class ShopController extends Controller
 
     /**
      *  Edit Shop
-     * 
+     *
      * @param  int $id
      * @param Request $request
      * @return \Illuminate\Routing\Redirector
@@ -87,7 +91,7 @@ class ShopController extends Controller
 
     /**
      * Update Shop
-     * 
+     *
      * @param  Request $request
      * @param  int  $id
      * @return \Illuminate\Routing\Redirector
@@ -116,7 +120,7 @@ class ShopController extends Controller
 
     /**
      * Delete Shop
-     * 
+     *
      * @param Request $request
      * @param  int $id
      * @return \Illuminate\Routing\Redirector
@@ -184,5 +188,12 @@ class ShopController extends Controller
     public function shopCsv($id)
     {
         return Excel::download(new ShopListExport($id), 'shop_list' . time() . '.csv');
+    }
+
+
+
+    public function showShops(){
+        $shops = $this->shop->getShops();
+        return view('shop::shops', $shops);
     }
 }

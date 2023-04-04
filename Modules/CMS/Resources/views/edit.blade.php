@@ -2,7 +2,7 @@
 @section('page_title', __('Edit :x', ['x' => __('Pages')]))
 @section('css')
     <link rel="stylesheet" href="{{ asset('datta-able/plugins/summer-note/summernote.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
+    <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
 @endsection
 @section('content')
     <div class="col-sm-12" id="page-container">
@@ -182,6 +182,6 @@
 @endsection
 @section('js')
     <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
-    <script src="{{ asset('Modules/CMS/Resources/assets/js/page.min.js') }}"></script>
-    <script src="{{ asset('Modules/CMS/Resources/assets/js/app.min.js') }}"></script>
+    <script src="{{ Module::asset('cms:js/page.min.js') }}"></script>
+    <script src="{{ Module::asset('cms:js/app.min.js') }}"></script>
 @endsection

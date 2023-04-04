@@ -2,7 +2,7 @@
 @section('page_title', __('Supports'))
 @section('css')
   <link rel="stylesheet" href="{{ asset('dist/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('Modules/Ticket/Resources/assets/css/style.min.css') }}">
+  <link rel="stylesheet" href="{{ Module::asset('ticket:css/style.min.css') }}">
   <link rel="stylesheet" href="{{ asset('dist/css/vendor-responsiveness.min.css') }}">
 @endsection
 
@@ -79,6 +79,6 @@
   </script>
 <script src="{{ asset('dist/js/moment.min.js') }}"></script>
 <script src="{{ asset('dist/plugins/bootstrap-daterangepicker/daterangepicker.min.js') }}"></script>
-<script src="{{ asset('Modules/Ticket/Resources/assets/js/message.min.js') }}"></script>
+<script src="{{ Module::asset('ticket:js/message.min.js') }}"></script>
 @endsection
 

@@ -1,9 +1,9 @@
 @extends('admin.layouts.app')
 @section('page_title', __('Appearance'))
 @section('css')
-    <link rel="stylesheet" href="{{ asset('Modules/CMS/Resources/assets/css/style.min.css') }}">
-    <link href="{{ asset('Modules/CMS/Resources/assets/css/draganddrop.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
+    <link rel="stylesheet" href="{{ Module::asset('cms:css/style.min.css') }}">
+    <link href="{{ Module::asset('cms:css/draganddrop.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
 
     {{-- Color picker --}}
     <link rel="stylesheet" href="{{ asset('datta-able/plugins/mini-color/css/jquery.minicolors.min.css') }}">
@@ -35,7 +35,7 @@
 
     <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
     <script src="{{ asset('dist/js/condition.min.js') }}"></script>
-    <script src="{{ asset('Modules/CMS/Resources/assets/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ Module::asset('cms:js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('dist/js/custom/jquery.blockUI.min.js') }}"></script>
-    <script src="{{ asset('Modules/CMS/Resources/assets/js/theme.min.js') }}"></script>
+    <script src="{{ Module::asset('cms:js/theme.min.js') }}"></script>
 @endsection

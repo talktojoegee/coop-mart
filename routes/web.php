@@ -54,6 +54,7 @@ Route::group(['middleware' => ['auth', 'locale', 'permission']], function () {
 
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
+
     // Role
     Route::get('role/list', 'RoleController@index')->name('roles.index');
     Route::get('role/create', 'RoleController@create')->name('roles.create');

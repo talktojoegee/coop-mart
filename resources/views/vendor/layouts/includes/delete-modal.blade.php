@@ -16,5 +16,5 @@
     </div>
   </div>
 </div>
-<script src="{{ asset('public/dist/js/custom/delete-modal.min.js') }}"></script>
+<script src="{{ asset('dist/js/custom/delete-modal.min.js') }}"></script>
 @include('admin.layouts.includes.batch-delete-modal')

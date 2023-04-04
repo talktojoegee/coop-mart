@@ -14,3 +14,8 @@
 Route::group(['namespace' => 'Modules\Shop\Http\Controllers', 'middleware' => ['auth', 'locale', 'permission']], function() {
 
 });
+
+Route::group(['namespace' => 'Modules\Shop\Http\Controllers'], function(){
+    //Route::get('/shops', 'ShopController@showShops')->name('shops');
+});
+

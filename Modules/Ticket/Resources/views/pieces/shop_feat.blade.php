@@ -47,5 +47,5 @@
 </div>
 
 @section('js')
-    <script src="{{ asset('Modules/Ticket/Resources/assets/js/message.min.js') }}"></script>
+    <script src="{{ Module::asset('ticket:js/message.min.js') }}"></script>
 @endsection

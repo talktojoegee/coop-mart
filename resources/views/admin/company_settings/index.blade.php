@@ -2,8 +2,8 @@
 @section('page_title', __('Company Settings'))
 @section('css')
     {{-- Media manager --}}
-    <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/dist/css/product.min.css') }}">
+    <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('dist/css/product.min.css') }}">
 @endsection
 
 @section('content')
@@ -295,6 +295,6 @@
         let oldCity = "{!! isset($companyData['company']['company_city']) ? $companyData['company']['company_city'] : 'null' !!}";
         let url = "{{ URL::to('/') }}";
     </script>
-    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
-    <script src="{{ asset('public/dist/js/custom/settings.min.js') }}"></script>
+    <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('dist/js/custom/settings.min.js') }}"></script>
 @endsection

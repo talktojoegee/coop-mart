@@ -1,10 +1,10 @@
 @extends('admin.layouts.app')
 @section('page_title', __('Edit Popup'))
 @section('css')
-    <link rel="stylesheet" href="{{ asset('Modules/CMS/Resources/assets/css/style.min.css') }}">
+    <link rel="stylesheet" href="{{ Module::asset('cms:css/style.min.css') }}">
     <link rel="stylesheet" href="{{ dist/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}">
     {{-- Media manager --}}
-    <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
+    <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
 @endsection
 @section('content')
     <div class="col-sm-12" id="popup-edit-container">

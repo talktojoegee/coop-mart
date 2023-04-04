@@ -1,8 +1,8 @@
 @extends('admin.layouts.app')
 @section('page_title', __('User Profile'))
 @section('css')
-    <link rel="stylesheet" href="{{ asset('public/dist/plugins/lightbox/css/lightbox.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('dist/plugins/lightbox/css/lightbox.min.css') }}">
+    <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
 @endsection
 @section('content')
     <div class="col-sm-12" id="user-edit-container">
@@ -247,12 +247,12 @@
     @include('mediamanager::image.modal_image')
 @endsection
 @section('js')
-    <script src="{{ asset('public/dist/plugins/lightbox/js/lightbox.min.js') }}"></script>
+    <script src="{{ asset('dist/plugins/lightbox/js/lightbox.min.js') }}"></script>
 
     <script type="text/javascript">
         "use strict";
         var user_id = '{{ $user->id }}';
     </script>
-    <script src="{{ asset('public/dist/js/custom/user.min.js') }}"></script>
-    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('dist/js/custom/user.min.js') }}"></script>
+    <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
 @endsection

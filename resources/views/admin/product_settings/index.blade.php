@@ -2,7 +2,7 @@
 @section('page_title', __('Product Setting'))
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('Modules/CMS/Resources/assets/css/style.min.css') }}">
+    <link rel="stylesheet" href="{{ Module::asset('cms:css/style.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/product.min.css') }}">
 @endsection
 

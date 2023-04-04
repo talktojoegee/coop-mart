@@ -608,10 +608,11 @@ trait ProductTrait
         }
 
         if (in_array($this->productThumbnail, array_keys((new File)->sizeRatio()))) {
-            return asset(implode(DIRECTORY_SEPARATOR, ['public', 'uploads', config('martvill.thumbnail_dir'), $this->productThumbnail, $file]));
+            return asset(implode(DIRECTORY_SEPARATOR, ['uploads', config('martvill.thumbnail_dir'), $this->productThumbnail, $file]));
         }
 
-        return asset('public' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $file);
+        return asset( 'uploads' . DIRECTORY_SEPARATOR . $file);
+        //return asset('public' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $file);
     }
 
 

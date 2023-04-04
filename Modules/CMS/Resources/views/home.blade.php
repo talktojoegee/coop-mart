@@ -160,7 +160,7 @@
 @endsection
 
 @section('css')
-    <link href="{{ asset('Modules/CMS/Resources/assets/css/draganddrop.min.css') }}" rel="stylesheet">
+    <link href="{{ Module::asset('cms:css/draganddrop.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('js')
@@ -172,6 +172,6 @@
         let updatePageUrl = "{{ route('page.home.quick-update', ['id' => '__id__']) }}";
         let deletePageUrl = "{{ route('page.delete', ['id' => '__id__']) }}";
     </script>
-    <script src="{{ asset('Modules/CMS/Resources/assets/js/app.min.js') }}"></script>
+    <script src="{{ Module::asset('cms:js/app.min.js') }}"></script>
 
 @endsection
