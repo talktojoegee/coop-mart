@@ -2,7 +2,7 @@
 @section('page_title', __('Edit Popup'))
 @section('css')
     <link rel="stylesheet" href="{{ Module::asset('cms:css/style.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dist/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}">
     {{-- Media manager --}}
     <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
 @endsection

@@ -62,7 +62,7 @@
 </div>
 @endsection
 @section('js')
-    <script src="{{ asset('dist/js/moment.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/moment.min.js') }}"></script>
     <script src="{{ asset('Modules/Blog/Resources/assets/js/blog.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/yajra-export.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/yajra-export.min.js') }}"></script>
 @endsection

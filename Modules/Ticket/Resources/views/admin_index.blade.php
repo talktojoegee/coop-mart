@@ -1,9 +1,9 @@
 @extends('admin.layouts.app')
 @section('page_title', __('Supports'))
 @section('css')
-    <link rel="stylesheet" href="{{ asset('dist/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}">
     <link rel="stylesheet" href="{{ Module::asset('ticket:css/style.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dist/css/product.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/css/product.min.css') }}">
 @endsection
 @section('content')
     <!-- Main content -->
@@ -92,9 +92,9 @@
     var startDate = "{!! isset($from) ? $from : 'undefined' !!}";
     var endDate = "{!! isset($to) ? $to : 'undefined' !!}";
     </script>
-     <script src="{{ asset('datta-able/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
-    <script src="{{ asset('dist/js/moment.min.js') }}"></script>
-    <script src="{{ asset('dist/plugins/bootstrap-daterangepicker/daterangepicker.min.js') }}"></script>
+     <script src="{{ asset('public/datta-able/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/moment.min.js') }}"></script>
+    <script src="{{ asset('public/dist/plugins/bootstrap-daterangepicker/daterangepicker.min.js') }}"></script>
     <script src="{{ Module::asset('ticket:js/customerpanel.min.js') }}"></script>
     <script src="{{ Module::asset('ticket:js/message.min.js') }}"></script>
 @endsection

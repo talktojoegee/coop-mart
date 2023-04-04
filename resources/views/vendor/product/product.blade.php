@@ -9,11 +9,11 @@
 
 @push('styles')
  <!-- summer note css -->
-    <link rel="stylesheet" href="{{ asset('datta-able/plugins/summer-note/summernote-lite.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/datta-able/plugins/summer-note/summernote-lite.min.css') }}">
     <!-- date range picker css -->
-    <link rel="stylesheet" href="{{ asset('dist/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}">
     <!-- custom category -->
-    <link rel="stylesheet" href="{{ asset('dist/css/custom-category.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/css/custom-category.min.css') }}">
 @endpush
 @section('content')
     @php
@@ -90,16 +90,16 @@
     <!-- summernote JS -->
     <script src="{{ asset('datta-able/plugins/summer-note/summernote-lite.min.js') }}"></script>
     <!-- sweetalert JS -->
-    <script src="{{ asset('datta-able/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/delete-modal.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/delete-modal.min.js') }}"></script>
     <!-- date range picker Js -->
-    <script src="{{ asset('dist/js/moment.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/moment.min.js') }}"></script>
 
-    <script src="{{ asset('dist/plugins/bootstrap-daterangepicker/daterangepicker.min.js') }}"></script>
+    <script src="{{ asset('public/dist/plugins/bootstrap-daterangepicker/daterangepicker.min.js') }}"></script>
 
-    <script src="{{ asset('dist/js/custom/product.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/jquery.blockUI.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/custom-category.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/product.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/jquery.blockUI.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/custom-category.min.js') }}"></script>
     <script>
         var parentCategoryId = {{ isset($product) ? json_encode($parentCategoryId) : json_encode([]) }}
         parentCategoryId != '' ? buttonIsDisable = false : '';
@@ -126,6 +126,6 @@
             variations: 0
         }
     </script>
-    <script src="{{ asset('dist/js/xss.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/create-product.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/xss.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/create-product.min.js') }}"></script>
 @endsection

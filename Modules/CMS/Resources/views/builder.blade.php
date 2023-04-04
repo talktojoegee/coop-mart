@@ -113,14 +113,14 @@
 @push('styles')
     <link href="{{ Module::asset('cms:css/draganddrop.min.css') }}" rel="stylesheet">
     <link href="{{ Module::asset('cms:css/style.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('dist/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}">
 @endpush
 
 @section('js')
-    <script src="{{ asset('dist/plugins/lightbox/js/lightbox.min.js') }}"></script>
-    <script src="{{ asset('dist/js/moment.min.js') }}"></script>
+    <script src="{{ asset('public/dist/plugins/lightbox/js/lightbox.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/moment.min.js') }}"></script>
     <script src="{{ Module::asset('cms:js/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('dist/plugins/bootstrap-daterangepicker/daterangepicker.min.js') }}"></script>
+    <script src="{{ asset('public/dist/plugins/bootstrap-daterangepicker/daterangepicker.min.js') }}"></script>
 
     <script>
         let selectorData = @json($layouts);
@@ -137,7 +137,7 @@
         const queryOperations = @json($queryOperations);
     </script>
 
-    <script src="{{ asset('dist/js/xss.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/xss.min.js') }}"></script>
     <script src="{{ Module::asset('cms:js/builder.min.js') }}"></script>
     <script src="{{ Module::asset('cms:js/query.min.js') }}"></script>
 @endsection

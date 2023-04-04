@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="{{ asset('css/app.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/tailwind-custom.min.css') }} ">
+    <link rel="stylesheet" href="{{ asset('public/css/app.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/tailwind-custom.min.css') }} ">
 </head>
 <body>
     <div class="ml-10 mr-5 xxs:mx-auto lg:mx-4 xl:mx-32 2xl:mx-50 3xl:mx-354p">
