@@ -26,12 +26,12 @@
 
 <body>
     @yield('content')
-    <script src="{{ asset('dist/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('datta-able/plugins/bootstrap-v5/js/slim.min.js') }}"></script>
-    <script src="{{ asset('datta-able/plugins/bootstrap-v5/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('datta-able/js/pcoded.min.js') }}"></script>
-    <script src="{{ asset('datta-able/plugins/select2/js/select2.full.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/app-layout.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/plugins/bootstrap-v5/js/slim.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/plugins/bootstrap-v5/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/js/pcoded.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/app-layout.min.js') }}"></script>
     @stack('scripts')
 </body>
 

@@ -1,7 +1,7 @@
 @extends('../site/layouts.user_panel.app')
 @section('page_title', __('Refund Details'))
 @section('css')
-    <link rel="stylesheet" href="{{ asset('dist/plugins/lightbox/css/lightbox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/plugins/lightbox/css/lightbox.min.css') }}">
 @endsection
 @section('content')
     <div class="dark:bg-red-1 h-full xl:px-74p px-5 pt-30p xl:pt-14">
@@ -198,7 +198,7 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('dist/js/custom/site/common.min.js') }}"></script>
-    <script src="{{ asset('dist/plugins/lightbox/js/lightbox.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/refund.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/site/common.min.js') }}"></script>
+    <script src="{{ asset('public/dist/plugins/lightbox/js/lightbox.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/refund.min.js') }}"></script>
 @endsection

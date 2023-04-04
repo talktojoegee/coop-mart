@@ -56,7 +56,7 @@ function createJsonFile($filename = 'file.json', $data = array())
 
 /**
  * Translate Validation Message
- *
+ * 
  * @return string
  */
 function translateValidationMessages()
@@ -95,21 +95,21 @@ function getUserProfilePicture($userId = null, $thumbnail = 1)
 
 /**
  * Get Image Data
- *
+ * 
  * @param int|null $id
  * @param string|null $type
  * @param string|null $name
  * @param string|null $path
  * @param bool|null $isCatchble
  * @param bool $allImage
- *
+ * 
  * @return string
  */
 function getImageData($id = null, $type = null, $name = null, $path = null, $isCatchble = null, $allImage = false)
 {
     $image = Cache::get(config('cache.prefix') . '-' . strtolower($type) . '-' . $name . '-' . $id);
     if (empty($image)) {
-        $image = url("dist/img/default-image.png");
+        $image = url("public/dist/img/default-image.png");
         if (!empty($id)) {
             $pic = (new File)->getFiles($type, $id);
             if ($allImage == true) {
@@ -135,7 +135,7 @@ function getImageData($id = null, $type = null, $name = null, $path = null, $isC
 
 /**
  * Validate Phone Number
- *
+ * 
  * @param string|null $number
  * @return bool
  */
@@ -151,7 +151,7 @@ function validatePhoneNumber($number = null)
 
 /**
  * Validate Email
- *
+ * 
  * @param string|null $email
  * @return bool
  */
@@ -167,7 +167,7 @@ function validateEmail($email = null)
 
 /**
  * Validate Name
- *
+ * 
  * @param string|null $name
  * @return bool
  */
@@ -189,7 +189,7 @@ function validateName($name = null)
 
 /**
  * Get Theme Class
- *
+ * 
  * @param string|null $tagName
  * @return string
  */
@@ -378,7 +378,7 @@ function isSuperAdmin($userId = null)
 if (!function_exists('defaultRoles')) {
     /**
      * Default Roles
-     *
+     * 
      * @return array
      */
     function defaultRoles()
@@ -389,28 +389,28 @@ if (!function_exists('defaultRoles')) {
 
 /**
  * Default Image
- *
+ * 
  * @param string $type
  * @return string
  */
 function defaultImage(string $type)
 {
     $defaultImages = [
-        'products' => 'dist/img/default_product.jpg',
-        'users' => 'dist/img/avatarUser.png',
-        'blogs' => 'dist/img/blog.png',
+        'products' => 'public/dist/img/default_product.jpg',
+        'users' => 'public/dist/img/avatarUser.png',
+        'blogs' => 'public/dist/img/blog.png',
     ];
 
     if (array_key_exists($type, $defaultImages)) {
         return $defaultImages[$type];
     }
 
-    return 'dist/img/default-image.png';
+    return 'public/dist/img/default-image.png';
 }
 
 /**
  * Data Table Options
- *
+ * 
  * @param array $options
  * @return array
  */
@@ -427,7 +427,7 @@ function dataTableOptions(array $options = [])
 
 /**
  * Label Required Element
- *
+ * 
  * @return array
  */
 function labelRequiredElement()
@@ -437,7 +437,7 @@ function labelRequiredElement()
 
 /**
  * Select Product Option
- *
+ * 
  * @return array
  */
 function selectProductForOption()
@@ -446,8 +446,8 @@ function selectProductForOption()
 }
 
 /**
- * Has Permission
- *
+ * Has Permission 
+ * 
  * @param string|null $permission
  * @param int|null $userId
  * @return bool
@@ -527,7 +527,7 @@ if (!function_exists('wrapIt')) {
 if (!function_exists('statusBadges')) {
     /**
      * Status Badges
-     *
+     * 
      * @param string $status
      * @return string
      */
@@ -579,7 +579,7 @@ if (!function_exists('statusBadges')) {
 
 /**
  * Is Active
- *
+ * 
  * @param string $name
  * @return bool
  */
@@ -594,7 +594,7 @@ function isActive(String $name = null)
 
 /**
  * Module
- *
+ * 
  * @param string $name
  * @return object
  */
@@ -682,7 +682,7 @@ function getIpAddress()
 
 /**
  * Get Unique Address
- *
+ * 
  * @return string
  */
 function getUniqueAddress()
@@ -729,7 +729,7 @@ function hasProductCodeExists($code = null)
 
 /**
  * Wishlist Active
- *
+ * 
  * @param int|null $itemId
  * @param int|null $userId
  * @return bool
@@ -745,7 +745,7 @@ function wishListActive($itemId = null, $userId = null)
 
 /**
  * Get Service Data
- *
+ * 
  * @param int $type
  * @param int $period
  * @return array
@@ -765,7 +765,7 @@ function getServiceData($type = 0, $period = 0)
 
 /**
  * Get Status
- *
+ * 
  * @return array
  */
 function getStatus()
@@ -777,7 +777,7 @@ function getStatus()
 
 /**
  * Get Color
- *
+ * 
  * @return array
  */
 function getColor()
@@ -826,7 +826,7 @@ if (!function_exists('array_val')) {
 
 /**
  * Get only number
- *
+ * 
  * @param string|null $data
  * @return string
  */
@@ -849,7 +849,7 @@ if (!function_exists('checkDownloadableData')) {
 
 /**
  * Get Formatted Countdown
- *
+ * 
  * @return string
  */
 function getFormatedCountdown()
@@ -889,7 +889,7 @@ if (!function_exists('currency')) {
 
 /**
  * g_e_v
- *
+ * 
  * @return string
  */
 function g_e_v()
@@ -899,7 +899,7 @@ function g_e_v()
 
 /**
  * g_d
- *
+ * 
  * @return string
  */
 function g_d()
@@ -909,7 +909,7 @@ function g_d()
 
 /**
  * g_c_v
- *
+ * 
  * @return string
  */
 function g_c_v()
@@ -919,7 +919,7 @@ function g_c_v()
 
 /**
  * p_c_v
- *
+ * 
  * @return string
  */
 function p_c_v()

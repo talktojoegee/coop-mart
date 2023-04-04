@@ -98,7 +98,7 @@
                                                                 <i class="fa fa-times"></i>
                                                             </div>
                                                             <img class="upl-img object-cover" class="p-1"
-                                                                src="{{ asset('uploads') . DIRECTORY_SEPARATOR . $slide->image }}"
+                                                                src="{{ asset('public/uploads') . DIRECTORY_SEPARATOR . $slide->image }}"
                                                                 alt="{{ __('Image') }}">
                                                             <input type="hidden"
                                                                 name="slider[{{ $loop->index }}][image]"

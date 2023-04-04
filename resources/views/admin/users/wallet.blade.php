@@ -2,9 +2,9 @@
 @section('page_title', __('Edit :x', ['x' => __('User')]))
 @section('css')
     {{-- Select2 --}}
-    <link rel="stylesheet" href="{{ asset('datta-able/plugins/select2/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dist/plugins/lightbox/css/lightbox.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dist/css/user-list.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/datta-able/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/plugins/lightbox/css/lightbox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/css/user-list.min.css') }}">
 @endsection
 
 @section('content')
@@ -30,5 +30,5 @@
         var pdf = 0;
         var csv = 0;
     </script>
-    <script src="{{ asset('dist/js/custom/permission.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/permission.min.js') }}"></script>
 @endsection

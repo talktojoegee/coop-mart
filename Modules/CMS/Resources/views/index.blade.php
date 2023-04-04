@@ -86,7 +86,7 @@
             </div>
         </div>
     </div>
-
+    
     @include('cms::pieces.delete-modal')
 
     <div id="updatePage" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="updatePageLabel"

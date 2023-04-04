@@ -67,7 +67,7 @@
                                 @foreach ($languages as $language)
                                     <li class="notification">
                                         <div class="media lang d-flex" id="{{ $language->short_name }}" data-shortname="{{ $language->short_name }}">
-                                            <img class="img-radius" src='{{ asset("datta-able/fonts/flag/flags/4x3/" . getSVGFlag($language->short_name) . ".svg") }}' alt="{{ $language->flag }}">
+                                            <img class="img-radius" src='{{ url("public/datta-able/fonts/flag/flags/4x3/" . getSVGFlag($language->short_name) . ".svg") }}' alt="{{ $language->flag }}">
                                             <div class="media-body">
                                                 <p><span>{{ $language->name }}</span></p>
                                             </div>

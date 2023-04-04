@@ -1,6 +1,6 @@
 @if (isActive('Newsletter'))
     <section class="primary-bg-color py-3.5 relative pb-22p px-5 sub-img my-10 md:my-12"
-        style='background-image:url({{ asset('frontend/assets/img/product/bg-img.png') }});margin-top:{{ $component->mt }};margin-bottom:{{ $component->mb }};'>
+        style='background-image:url({{ asset('public/frontend/assets/img/product/bg-img.png') }});margin-top:{{ $component->mt }};margin-bottom:{{ $component->mb }};'>
         <div class="text-black flex flex-col items-center justify-center py-4 md:pt-8 md:pb-6">
             @if ($component->title)
                 <p class="font-bold text-center md:text-3xl text-2xl dm-bold px-2">

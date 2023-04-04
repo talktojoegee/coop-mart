@@ -4,7 +4,7 @@
     @include('site.layouts.section.product-details.seo')
 @endsection
 @section('css')
-<link rel="stylesheet" href="{{ asset('frontend/assets/swiper/swiper-bundle.min.css') }}">
+<link rel="stylesheet" href="{{ asset('public/frontend/assets/swiper/swiper-bundle.min.css') }}">
 @endsection
 @section('content')
 
@@ -276,12 +276,12 @@
     tempIsGroupProduct = isGroupProduct;
     tempItemType = "{{ $type }}";
 </script>
-<script src="{{ asset('frontend/assets/swiper/swiper-bundle.min.js') }}"></script>
-<script src="{{ asset('dist/js/custom/site/flatpickr.min.js') }}"></script>
-<script src="{{ asset('dist/js/custom/site/wishlist.min.js') }}"></script>
-<script src="{{ asset('dist/js/custom/site/compare.min.js') }}"></script>
-<script src="{{ asset('dist/js/custom/site/description-tabs.min.js') }}"></script>
-<script src="{{ asset('dist/js/custom/jquery.blockUI.min.js') }}"></script>
-<script src="{{ asset('dist/js/custom/site/product-details.min.js') }}"></script>
-<script src="{{ asset('dist/js/custom/site/delivery-address.min.js') }}"></script>
+<script src="{{ asset('public/frontend/assets/swiper/swiper-bundle.min.js') }}"></script>
+<script src="{{ asset('public/dist/js/custom/site/flatpickr.min.js') }}"></script>
+<script src="{{ asset('public/dist/js/custom/site/wishlist.min.js') }}"></script>
+<script src="{{ asset('public/dist/js/custom/site/compare.min.js') }}"></script>
+<script src="{{ asset('public/dist/js/custom/site/description-tabs.min.js') }}"></script>
+<script src="{{ asset('public/dist/js/custom/jquery.blockUI.min.js') }}"></script>
+<script src="{{ asset('public/dist/js/custom/site/product-details.min.js') }}"></script>
+<script src="{{ asset('public/dist/js/custom/site/delivery-address.min.js') }}"></script>
 @endsection

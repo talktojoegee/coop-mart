@@ -22,7 +22,7 @@ class LanguageController extends Controller
     {
         $data['list_menu']         = 'language';
         $data['languageList']      = Language::getAll();
-        $data['languagesImgPath']  = '/uploads/flags';
+        $data['languagesImgPath']  = 'public/uploads/flags';
         $data['languageShortName'] = getShortLanguageName(false, $data['languageList']);
 
         return view('admin.language.index', $data);
@@ -118,7 +118,7 @@ class LanguageController extends Controller
             $return_lang['id'] = $language->id;
             $return_lang['language_name'] = $language->name;
             $return_lang['short_name'] = $language->short_name;
-            $return_lang['flag'] = url("datta-able/fonts/flag/flags/4x3/". getSVGFlag($language->short_name) .".svg");
+            $return_lang['flag'] = url("public/datta-able/fonts/flag/flags/4x3/". getSVGFlag($language->short_name) .".svg");
             $return_lang['status'] = $language->status;
             $return_lang['is_default'] = $language->is_default;
             $return_lang['direction'] = $language->direction;

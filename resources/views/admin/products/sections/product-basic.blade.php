@@ -46,7 +46,7 @@
                                             </div>
                                         </div>
                                         <div class="ajax-loader">
-                                            <img src="{{ asset('dist/img/loader/loader.gif') }}"
+                                            <img src="{{ asset('public/dist/img/loader/loader.gif') }}"
                                                 class="img-responsive" />
                                         </div>
                                         @php

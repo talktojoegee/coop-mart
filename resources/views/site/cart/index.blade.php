@@ -456,6 +456,6 @@
     <!-- order-summary end -->
 @endsection
 @section('js')
-    <script src="{{ asset('dist/js/custom/site/wishlist.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/jquery.blockUI.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/site/wishlist.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/jquery.blockUI.min.js') }}"></script>
 @endsection

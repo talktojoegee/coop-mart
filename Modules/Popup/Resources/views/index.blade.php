@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 @section('page_title', __('Popups'))
 @section('css')
-    <link rel="stylesheet" href="{{ asset('dist/css/marketing.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/css/marketing.min.css') }}">
 @endsection
 @section('content')
     <!-- Main content -->

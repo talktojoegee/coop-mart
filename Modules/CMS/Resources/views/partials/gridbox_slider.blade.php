@@ -10,7 +10,7 @@
             <div class="relative h-600p w-full builder_slider fade">
                 @isset($slide->image)
                     <img class="w-full h-full object-cover rounded-md"
-                        src="{{ asset('uploads') . DIRECTORY_SEPARATOR . $slide->image }}">
+                        src="{{ asset('public/uploads') . DIRECTORY_SEPARATOR . $slide->image }}">
                 @endisset
                 <div class="absolute bottom-0 p-6">
                     @if ($slide->u_subtitle)

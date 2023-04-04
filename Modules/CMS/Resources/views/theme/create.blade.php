@@ -1,9 +1,9 @@
 @extends('admin.layouts.app')
 @section('page_title', __('Appearance'))
 @section('css')
-    <link rel="stylesheet" href="{{asset('Modules/CMS/Resources/assets/css/style.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Modules/CMS/Resources/assets/css/style.min.css') }}">
     <link href="{{ asset('Modules/CMS/Resources/assets/css/draganddrop.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
 
     {{-- Color picker --}}
     <link rel="stylesheet" href="{{ asset('public/datta-able/plugins/mini-color/css/jquery.minicolors.min.css') }}">

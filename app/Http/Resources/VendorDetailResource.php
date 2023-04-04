@@ -20,7 +20,7 @@ class VendorDetailResource extends JsonResource
      */
     public function toArray($request = [])
     {
-        $pictureURL  = url("dist/img/default-image.png");
+        $pictureURL  = url("public/dist/img/default-image.png");
         $pictureName = "default-image.png";
         if (isset($this->avatarFile->file_name) && !empty($this->avatarFile->file_name) && file_exists('public/uploads/vendor/' . $this->avatarFile->file_name)) {
             $pictureURL  = url("public/uploads/vendor/" . $this->avatarFile->file_name);

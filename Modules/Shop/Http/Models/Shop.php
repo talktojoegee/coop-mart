@@ -197,8 +197,4 @@ class Shop extends Model
         }
         return null;
     }
-
-    public function getShops(){
-        return Shop::orderBy('name', 'ASC')->get();
-    }
 }

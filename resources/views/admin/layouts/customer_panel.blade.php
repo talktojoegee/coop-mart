@@ -57,7 +57,7 @@
     </script>
 
       <!-- Required Js -->
-      <script src="{{ datta-able/js/vendor-all.min.js') }}"></script>
+      <script src="{{ asset('public/datta-able/js/vendor-all.min.js') }}"></script>
 
   </head>
 

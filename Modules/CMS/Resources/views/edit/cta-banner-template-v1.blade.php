@@ -86,7 +86,7 @@
                                                             <i class="fa fa-times"></i>
                                                         </div>
                                                         <img class="upl-img" class="p-1"
-                                                            src="{{ asset('uploads') . DIRECTORY_SEPARATOR . $component->image }}"
+                                                            src="{{ asset('public/uploads') . DIRECTORY_SEPARATOR . $component->image }}"
                                                             alt="{{ __('Image') }}">
                                                         <input type="hidden" name="image"
                                                             value="{{ $component->image }}">

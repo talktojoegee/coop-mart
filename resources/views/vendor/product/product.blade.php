@@ -120,7 +120,7 @@
         let itemsAjaxSearch =
             '{{ isset($product) ? route('vendor.findProductsAjax', ['code' => $product->code]) : route('vendor.findProductsAjax') }}';
         let tagsAjaxSearch = '{{ route('vendor.findTagsAjax') }}';
-        let variationImagePlaceholder = '{{ asset('dist/img/not.svg') }}';
+        let variationImagePlaceholder = '{{ asset('public/dist/img/not.svg') }}';
         const countHelper = {
             attributes: 0,
             variations: 0

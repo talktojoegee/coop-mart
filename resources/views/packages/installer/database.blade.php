@@ -1,7 +1,7 @@
 @extends('packages.installer.layout')
 
 @section('style')
-    <link rel="stylesheet" href="{{ asset('dist/css/installer.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/css/installer.min.css') }}">
 @endsection
 
 @section('content')
@@ -78,5 +78,5 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('dist/js/custom/installer.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/installer.min.js') }}"></script>
 @endsection

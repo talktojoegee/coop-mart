@@ -1,9 +1,9 @@
 @extends('vendor.layouts.app')
 @section('page_title', __('Supports'))
 @section('css')
-<link rel="stylesheet" href="{{ asset('datta-able/plugins/summer-note/summernote-lite.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('dist/css/invoice-style.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('dist/css/summer-note-modal.min.css') }}">
+<link rel="stylesheet" href="{{ asset('public/datta-able/plugins/summer-note/summernote-lite.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/dist/css/invoice-style.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/dist/css/summer-note-modal.min.css') }}">
     <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
 @endsection
 @section('content')
@@ -124,5 +124,5 @@
         'use strict';
         var projectId = "{{ !empty($getProject) ? $getProject : '' }}";
     </script>
-
+    
 @endsection

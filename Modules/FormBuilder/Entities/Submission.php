@@ -86,8 +86,7 @@ class Submission extends Model
                     if ($entry['type'] == 'file') {
                         $array = explode("/", $current_submitted_val);
                         $entry['data-title'] = end($array);
-                        $current_submitted_val = asset('uploads' . DIRECTORY_SEPARATOR . $current_submitted_val);
-                        //$current_submitted_val = asset('public' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $current_submitted_val);
+                        $current_submitted_val = asset('public' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $current_submitted_val);
                         $entry['data-url'] = $current_submitted_val;
                     }
 
@@ -185,8 +184,7 @@ class Submission extends Model
         // if the type is 'file' then we have to render this as a link
         if ($type == 'file') {
             if (isset($this->content[$key])) {
-                $file_link = asset('uploads' . DIRECTORY_SEPARATOR . $this->content[$key]);
-                //$file_link = asset('public' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $this->content[$key]);
+                $file_link = asset('public' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $this->content[$key]);
                 $str = "<a href='{$file_link}' target='__blank'><i class='feather icon-file-text mr-1'></i>" . __('Show file') . "</a>";
             } else {
                 $str = __('No file');

@@ -246,6 +246,6 @@
 
 @endsection
 @section('js')
-    <script src="{{ asset('dist/js/custom/site/wishlist.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/site/compare.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/site/wishlist.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/site/compare.min.js') }}"></script>
 @endsection

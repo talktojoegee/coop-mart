@@ -41,9 +41,9 @@
     <script>
         var authUserId = {{ isset(\Illuminate\Support\Facades\Auth::user()->id) ? \Illuminate\Support\Facades\Auth::user()->id : 0 }}
     </script>
-    <script src="{{ asset('dist/js/custom/site/wishlist.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/site/filter.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/site/compare.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/site/wishlist.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/site/filter.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/site/compare.min.js') }}"></script>
 
     {{-- category select deselect --}}
     <script>
@@ -57,5 +57,5 @@
             });
         });
     </script>
-    <script src="{{ asset('dist/js/custom/site/res-filter.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/site/res-filter.min.js') }}"></script>
 @endsection

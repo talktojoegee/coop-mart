@@ -107,7 +107,7 @@ if (!function_exists('getFileIconAF4')) {
 if (!function_exists('checkFileValidation')) {
     /**
      * Check File Validation
-     *
+     * 
      * @param string $ext
      * @param int $type
      * @return bool
@@ -121,7 +121,7 @@ if (!function_exists('checkFileValidation')) {
 if (!function_exists('getFileExtensions')) {
     /**
      * Get File Extensions
-     *
+     * 
      * @param int $type
      * @return array
      */
@@ -142,7 +142,7 @@ if (!function_exists('getFileExtensions')) {
 if (!function_exists('nameConversion')) {
     /**
      * Name Conversion
-     *
+     * 
      * @param string $fileName
      * @return string
      */
@@ -160,7 +160,7 @@ if (!function_exists('nameConversion')) {
 if (!function_exists('getSVGFlag')) {
     /**
      * Get SVG Flag
-     *
+     * 
      * @param string $code
      * @return string
      */
@@ -292,14 +292,14 @@ if (!function_exists('createDirectory')) {
 if (!function_exists('printPDF')) {
     /**
      * Print PDF
-     *
+     * 
      * @param object $data
      * @param string $filename
      * @param string $template
      * @param view $renderView
      * @param string|null $type
      * @param string|null $pdfVal
-     *
+     * 
      * @return response
      */
     function printPDF($data, $filename, $template, $renderView, $type = null, $pdfVal = null)
@@ -323,7 +323,7 @@ if (!function_exists('printPDF')) {
 if (!function_exists('initializeMpdf')) {
     /**
      * Initialize Mpdf
-     *
+     * 
      * @return object
      */
     function initializeMpdf()
@@ -362,7 +362,7 @@ if (!function_exists('initializeMpdf')) {
 if (!function_exists('getPdfFont')) {
     /**
      * Get Pdf Font
-     *
+     * 
      * @return array
      */
     function getPdfFont()
@@ -373,7 +373,7 @@ if (!function_exists('getPdfFont')) {
         switch ($languageShortCode) {
             case 'ar':
                 $fontFamily['name'] = "Tajawal" . ", sans-serif";
-                $fontFamily['link'] = asset('dist/fonts/tajawal.css?v1');
+                $fontFamily['link'] = asset('public/dist/fonts/tajawal.css?v1');
                 break;
 
             default:

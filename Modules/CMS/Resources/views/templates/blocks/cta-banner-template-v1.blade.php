@@ -3,7 +3,7 @@
     style="margin-top:{{ $component->mt }};margin-bottom:{{ $component->mb }};">
     <{{ $component->full_link == 1 ? 'a' : 'div' }} class="block relative h-full"
         href="{{ $component->full_link == 1 ? $component->btn_link : '' }}">
-        <div style="background:linear-gradient(to right, #FDFDFD 21.44%, rgba(223, 223, 223, 0) 70.79%), url('{{ urlSlashReplace(asset('uploads') . DIRECTORY_SEPARATOR . $component->image) }}');height: {{ $component->height . 'px !important' }}"
+        <div style="background:linear-gradient(to right, #FDFDFD 21.44%, rgba(223, 223, 223, 0) 70.79%), url('{{ urlSlashReplace(asset('public/uploads') . DIRECTORY_SEPARATOR . $component->image) }}');height: {{ $component->height . 'px !important' }}"
             class="promote-img {{ $component->rounded == 1 ? 'rounded-md' : '' }}"> </div>
             <div class="absolute top-0 bottom-0 left-0 right-0 p-6 flex align-items-center">
                 <div>

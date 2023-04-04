@@ -23,7 +23,6 @@ use Modules\Blog\Http\Models\{
 };
 use Modules\CMS\Entities\Page as HomePage;
 use Modules\Gateway\Entities\GatewayModule;
-use Modules\Shop\Http\Models\Shop;
 use Modules\CMS\Http\Models\{
     Slide,
     Page
@@ -36,11 +35,6 @@ use DB;
 
 class SiteController extends Controller
 {
-
-
-    public function __construct(){
-        $this->shop = new Shop();
-    }
 
     /**
      * Homepage
@@ -563,14 +557,5 @@ class SiteController extends Controller
         }
 
         abort(404);
-    }
-
-
-    public function showShops(){
-        $data['displayPrice'] = preference('display_price_in_shop');
-        $data['homeService'] = $homeService = new \Modules\CMS\Service\HomepageService;
-        $data['page'] = $homeService->home();
-        $data['shops'] = $this->shop->getShops();
-        return view('site.home.shops',$data);
     }
 }

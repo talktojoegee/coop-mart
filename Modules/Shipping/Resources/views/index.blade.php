@@ -71,7 +71,7 @@
     <script>
         var currencySymbol = "{!! preg_replace('/[0-9\.]+/', '', formatNumber('')) !!}"
     </script>
-    <script src="{{ asset('dist/js/condition.min.js') }}"></script>
-    <script src="{{ asset('dist/js/xss.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/condition.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/xss.min.js') }}"></script>
     <script src="{{ asset('Modules/Shipping/Resources/assets/js/shipping.min.js') }}"></script>
 @endsection

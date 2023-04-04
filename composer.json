@@ -54,17 +54,17 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
-            "Modules\\": "Modules/",
+            "App\\": "xapp/",
+            "Modules\\": "xModules/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/helpers/helpers.php",
-            "app/helpers/strings.php",
-            "app/helpers/files.php",
-            "app/helpers/langdatetime.php",
-            "app/helpers/numbers.php"
+          "xapp/helpers/helpers.php",
+          "xapp/helpers/strings.php",
+          "xapp/helpers/files.php",
+          "xapp/helpers/langdatetime.php",
+          "xapp/helpers/numbers.php"
         ]
     },
     "autoload-dev": {

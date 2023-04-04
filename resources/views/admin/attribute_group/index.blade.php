@@ -2,8 +2,8 @@
 @section('page_title', __('Attribute Groups'))
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('datta-able/plugins/select2/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dist/css/product.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/datta-able/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/css/product.min.css') }}">
 @endsection
 
 @section('content')
@@ -57,12 +57,12 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('datta-able/plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/plugins/select2/js/select2.full.min.js') }}"></script>
     <script type="text/javascript">
         'use strict';
         var pdf = "{{ (in_array('App\Http\Controllers\AttributeGroupController@pdf', $prms)) ? '1' : '0' }}";
         var csv = "{{ (in_array('App\Http\Controllers\AttributeGroupController@csv', $prms)) ? '1' : '0' }}";
     </script>
-    <script src="{{ asset('dist/js/custom/permission.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/attribute.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/permission.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/attribute.min.js') }}"></script>
 @endsection

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('public/css/tailwind-custom.min.css') }}" />
     <link href="{{ asset('public/frontend/assets/css/google-font-inter.min.css') }}" >
     <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/main.min.css') }}" />
-    <link rel="stylesheet" href="{{asset('public/css/app.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('public/css/app.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/dark.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('public/datta-able/fonts/fontawesome/css/fontawesome-all.min.css') }}">
     <script src="{{ asset('public/frontend/assets/js/alpine.min.js') }}" defer></script>

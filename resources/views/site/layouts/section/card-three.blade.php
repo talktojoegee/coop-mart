@@ -1,10 +1,10 @@
 <div class="hover:shadow-md border bg-white rounded layout relative pb-10">
     <div class="border-gray-600">
         <div class="relative group">
-            @if (array_key_exists($item->id, $itemFiles) && file_exists('uploads/items/'. $itemFiles[$item->id]))
-                <img src="{{ asset('uploads/items/'. $itemFiles[$item->id]) }}" alt="{{ __('Image') }}" class="w-full h-44 sm:h-60" />
+            @if (array_key_exists($item->id, $itemFiles) && file_exists('public/uploads/items/'. $itemFiles[$item->id]))
+                <img src="{{ asset('public/uploads/items/'. $itemFiles[$item->id]) }}" alt="{{ __('Image') }}" class="w-full h-44 sm:h-60" />
             @else
-                <img src="{{ asset('dist/img/default-image.png') }}" alt="{{ __('Image') }}" class="w-full h-44 sm:h-60" />
+                <img src="{{ asset('public/dist/img/default-image.png') }}" alt="{{ __('Image') }}" class="w-full h-44 sm:h-60" />
             @endif
             <div class="layout1">
                 @if (\App\Models\Product::discountPercent($item->id) > 0)

@@ -1,7 +1,7 @@
 @extends('../site/layouts.app')
 @section('page_title', __('Check Out'))
 @section('css')
-    <link rel="stylesheet" href="{{ asset('datta-able/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/datta-able/plugins/select2/css/select2.min.css') }}">
 @endsection
 @section('content')
     <section class="mx-4 lg:mx-4 xl:mx-32 2xl:mx-64 3xl:mx-92 mt-70p mb-20">
@@ -505,8 +505,8 @@
         var dispalyTaxTotal = "{{ preference('display_tax_totals') }}";
         var calculateTaxShipping = "{{ preference('calculate_tax') }}";
     </script>
-    <script src="{{ asset('dist/js/custom/jquery.blockUI.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/site/checkout.min.js') }}"></script>
-    <script src="{{ asset('datta-able/plugins/select2/js/select2.full.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/site/address.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/jquery.blockUI.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/site/checkout.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('/public/dist/js/custom/site/address.min.js') }}"></script>
 @endsection

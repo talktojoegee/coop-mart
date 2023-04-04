@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-content black-text">
             <div class="center-align">
-                <p class="card-title">{{ __("Verify Envato Purchase Code") }} | <a style="color:red;" href="https://cutt.ly/PLFZenO" target="_blank">NULLED Web Community</a></p>
+                <p class="card-title">{{ __("Verify Envato Purchase Code") }}</p>
                 <hr>
             </div>
             @if(isset($responseError))

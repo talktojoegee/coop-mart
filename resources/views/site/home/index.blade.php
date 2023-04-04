@@ -39,9 +39,9 @@
     <script>
         const ajaxLoadUrl = "{{ route('ajax-product') }}"
     </script>
-    <script src="{{ asset('dist/js/custom/site/home.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/slick/slick.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/site/common.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/site/wishlist.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/site/compare.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/site/home.min.js') }}"></script>
+    <script src="{{ asset('public/frontend/assets/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/site/common.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/site/wishlist.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/site/compare.min.js') }}"></script>
 @endsection

@@ -104,7 +104,7 @@
                                                                 <!-- Escape the english details -->
                                                                 @php if ($language->short_name == 'en'){continue;} @endphp
                                                                 <div class="card-header p-0">
-                                                                    <img src='{{ url("datta-able/fonts/flag/flags/4x3/". getSVGFlag($language->short_name) .".svg") }}' height="20" alt="{{ $language->flag }}"> <span class="text-uppercase f-18 font-weight-bold">{{ $language->name }}</span>
+                                                                    <img src='{{ url("public/datta-able/fonts/flag/flags/4x3/". getSVGFlag($language->short_name) .".svg") }}' height="20" alt="{{ $language->flag }}"> <span class="text-uppercase f-18 font-weight-bold">{{ $language->name }}</span>
                                                                 </div>
                                                                 <br>
                                                                 <div class="row">

@@ -133,7 +133,7 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('/public/dist/js/custom/validation.min.js') }}"></script>
     <script src="{{ asset('public/datta-able/plugins/select2/js/select2.full.min.js')}}"></script>
-    <script src="{{ asset('public/dist/js/custom/user.min.js') }}"></script>
+    <script src="{{ asset('/public/dist/js/custom/user.min.js') }}"></script>
 @endsection

@@ -70,8 +70,7 @@ class MediaManagerController extends Controller
                     'id' => $file->id,
                     'name' => $file->original_file_name,
                     'path' => $file->file_name,
-                    'url' => asset('uploads' . DIRECTORY_SEPARATOR . $file->file_name)
-                    //'url' => asset('public' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $file->file_name)
+                    'url' => asset('public' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $file->file_name)
                 ];
             }),
             'html' => $html

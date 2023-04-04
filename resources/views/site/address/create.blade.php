@@ -20,7 +20,7 @@
             <p class="dark:text-gray-2 lg:mt-1.5 roboto-medium font-medium text-base xl:text-xl mt-2 text-20 text-gray-10 leading-6">
                 {{ __('Your Location, the place you get all the goods received..') }}</p>
         </div>
-
+        
         <div class="flex lg:mt-75p mt-10 dm-bold font-bold text-gray-12 text-base xl:text-2xl uppercase">
             <svg class="mr-3 xl:w-5 xl:h-5 w-3.5 h-3.5 mt-1" xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21"
                 fill="none">
@@ -163,7 +163,7 @@
         let oldState = "{!! old('state') ?? 'null' !!}";
         let oldCity = "{!! old('city') ?? 'null' !!}";
     </script>
-    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('/public/dist/js/custom/validation.min.js') }}"></script>
     <script src="{{ asset('public/datta-able/plugins/select2/js/select2.full.min.js') }}"></script>
-    <script src="{{ asset('public/dist/js/custom/site/address.min.js') }}"></script>
+    <script src="{{ asset('/public/dist/js/custom/site/address.min.js') }}"></script>
 @endsection

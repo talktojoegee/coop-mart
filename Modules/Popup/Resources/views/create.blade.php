@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 @section('page_title', __('Create Popup'))
 @section('css')
-    <link rel="stylesheet" href="{{asset('Modules/CMS/Resources/assets/css/style.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('Modules/CMS/Resources/assets/css/style.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/dist/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
 @endsection
