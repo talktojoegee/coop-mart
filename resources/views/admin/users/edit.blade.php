@@ -1,9 +1,9 @@
 @extends('admin.layouts.app')
 @section('page_title', __('Edit :x', ['x' => __('User')]))
 @section('css')
-    <link rel="stylesheet" href="{{ asset('dist/plugins/lightbox/css/lightbox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/plugins/lightbox/css/lightbox.min.css') }}">
     <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dist/css/user-list.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/css/user-list.min.css') }}">
 @endsection
 @section('content')
     <div class="col-sm-12" id="user-edit-container">
@@ -287,6 +287,6 @@
         var currentUrl = "{!! url()->full() !!}";
         var loginNeeded = "{!! session('loginRequired') ? 1 : 0 !!}";
     </script>
-    <script src="{{ asset('dist/js/custom/user.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/user.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
 @endsection

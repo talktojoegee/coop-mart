@@ -282,6 +282,6 @@
         var currentUrl = "{!! url()->full() !!}";
         var loginNeeded = "{!! session('loginRequired') ? 1 : 0 !!}";
     </script>
-    <script src="{{ asset('dist/js/custom/vendors.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/vendors.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
 @endsection

@@ -24,13 +24,13 @@
             --semi-primary-color: {{ $primaryColor . '11' }};
         }
     </style>
-    <link rel="stylesheet" href="{{ asset('css/app.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/tailwind-custom.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('frontend/assets/swiper/swiper-bundle.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/animate.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/google-font-roboto.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dist/plugins/jQueryUI/jquery-ui.min.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('public/css/app.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('public/css/tailwind-custom.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('public/frontend/assets/swiper/swiper-bundle.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/google-font-roboto.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/plugins/jQueryUI/jquery-ui.min.css') }}" type="text/css" />
     @php
         $favicon = App\Models\Preference::getFavicon();
     @endphp
@@ -40,11 +40,11 @@
     <!--Custom CSS that was written on view-->
     @yield('parent-css')
     <!-- Menubar css -->
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/ionicon.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/ionicon.min.css') }}" />
     <!-- Menubar css end-->
 
     <!-- Custom CSS-->
-    <link rel="stylesheet" href="{{ asset('dist/css/site_custom.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/css/site_custom.min.css') }}">
 
     <!-- User define custom dynamic css file -->
     <link rel="stylesheet" href="{{ Module::asset('cms:css/user-custom.css?v=' . time()) }}">
@@ -82,7 +82,7 @@
         @endauth
     </script>
     <!-- Required Js -->
-    <script src="{{ asset('dist/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/jquery.min.js') }}"></script>
 </head>
 
 <body class="antialiased min-h-screen" x-data="{ 'layout': 'grid' }">
@@ -149,20 +149,20 @@
         @include('../site/layouts.includes.product_view')
 
 
-    <script src="{{ asset('dist/js/custom/site/formatting.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/site/formatting.min.js') }}"></script>
+    <script src="{{ asset('public/frontend/assets/swiper/swiper-bundle.min.js') }}"></script>
 
     <!-- Custom Js -->
-    <script src="{{ asset('dist/plugins/jQueryUI/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/site/drawer.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/alpine.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/script.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/site/cart.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/site/lang.min.js') }}"></script>
-    <script src="{{ asset('dist/js/site-nav.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/sweet-alert2.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/site/site.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/main.min.js') }}"></script>
+    <script src="{{ asset('public/dist/plugins/jQueryUI/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/site/drawer.min.js') }}"></script>
+    <script src="{{ asset('public/frontend/assets/js/alpine.min.js') }}"></script>
+    <script src="{{ asset('public/frontend/assets/js/script.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/site/cart.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/site/lang.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/site-nav.min.js') }}"></script>
+    <script src="{{ asset('public/frontend/assets/js/sweet-alert2.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/site/site.min.js') }}"></script>
+    <script src="{{ asset('public/frontend/assets/js/main.min.js') }}"></script>
 
     @yield('parent-js')
 

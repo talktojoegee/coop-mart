@@ -178,6 +178,6 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
     <script src="{{ Module::asset('cms:js/slider.min.js') }}"></script>
 @endsection

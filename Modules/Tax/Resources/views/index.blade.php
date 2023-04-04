@@ -62,9 +62,9 @@
 
 @endsection
 @section('js')
-    <script src="{{ asset('dist/js/condition.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/jquery.blockUI.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/geolocale-suggestion.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/condition.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/jquery.blockUI.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/geolocale-suggestion.min.js') }}"></script>
     <script src="{{ asset('Modules/Tax/Resources/assets/js/tax.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
 @endsection

@@ -78,7 +78,7 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
-    <script src="{{ asset('datta-able/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/settings.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/settings.min.js') }}"></script>
 @endsection

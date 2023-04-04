@@ -2,7 +2,7 @@
 @section('page_title', __('Edit :x', ['x' => __('Template')]))
 
 @section('css')
-  <link rel="stylesheet" href="{{ asset('dist/plugins/codemirror/lib/codemirror.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('public/dist/plugins/codemirror/lib/codemirror.min.css') }}">
 @endsection
 
 @section('content')
@@ -182,8 +182,8 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
-    <script src="{{ asset('dist/plugins/codemirror/lib/codemirror.min.js') }}"></script>
-    <script src="{{ asset('dist/plugins/codemirror/mode/xml.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/templates.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('public/dist/plugins/codemirror/lib/codemirror.min.js') }}"></script>
+    <script src="{{ asset('public/dist/plugins/codemirror/mode/xml.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/templates.min.js') }}"></script>
 @endsection

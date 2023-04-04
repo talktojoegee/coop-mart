@@ -5,14 +5,14 @@
     <title>{{ trimWords(preference('company_name'), 17) }} | @yield('page_title', env('APP_NAME', ''))</title>
     <meta charset="UTF-8">
     <meta rel="stylesheet" name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/tailwind-custom.min.css') }}" />
-    <link href="{{ asset('frontend/assets/css/google-font-inter.min.css') }}" >
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/main.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/app.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/dark.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('datta-able/fonts/fontawesome/css/fontawesome-all.min.css') }}">
-    <script src="{{ asset('frontend/assets/js/alpine.min.js') }}" defer></script>
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/user-panel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/tailwind-custom.min.css') }}" />
+    <link href="{{ asset('public/frontend/assets/css/google-font-inter.min.css') }}" >
+    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/main.min.css') }}" />
+    <link rel="stylesheet" href="{{asset('public/css/app.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/dark.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('public/datta-able/fonts/fontawesome/css/fontawesome-all.min.css') }}">
+    <script src="{{ asset('public/frontend/assets/js/alpine.min.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/user-panel.min.css') }}">
 
     @php
         $favicon = App\Models\Preference::getFavicon();
@@ -31,7 +31,7 @@
         }
     </style>
     @yield('parent-css')
-    <link rel="stylesheet" href="{{ asset('dist/css/site_custom.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/css/site_custom.min.css') }}">
     <script type="text/javascript">
         'use strict';
         var SITE_URL              = "{{ URL::to('/') }}";
@@ -41,7 +41,7 @@
     </script>
 
     <!-- Required Js -->
-    <script src="{{ asset('dist/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/jquery.min.js') }}"></script>
 
 </head>
 
@@ -82,7 +82,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
         </div>
     </div>
     <!-- partial -->
-    <script src="{{ asset('frontend/assets/js/user-dashboard.min.js') }}"></script>
+    <script src="{{ asset('public/frontend/assets/js/user-dashboard.min.js') }}"></script>
 @yield('parent-js')
 
 </body>

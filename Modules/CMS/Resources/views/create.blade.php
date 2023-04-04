@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 @section('page_title', __('Create :x', ['x' => __('Pages')]))
 @section('css')
-    <link rel="stylesheet" href="{{ asset('datta-able/plugins/summer-note/summernote.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/datta-able/plugins/summer-note/summernote.min.css') }}">
     <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
 @endsection
 @section('content')
@@ -159,7 +159,7 @@
     @include('mediamanager::image.modal_image')
 @endsection
 @section('js')
-    <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
     <script src="{{ Module::asset('cms:js/app.min.js') }}"></script>
     <script src="{{ Module::asset('cms:js/page.min.js') }}"></script>
 @endsection

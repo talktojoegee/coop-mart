@@ -2,7 +2,7 @@
 @section('page_title', __('Edit Popup'))
 @section('css')
     <link rel="stylesheet" href="{{ Module::asset('cms:css/style.min.css') }}">
-    <link rel="stylesheet" href="{{ dist/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('dist/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}">
     {{-- Media manager --}}
     <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
 @endsection
@@ -924,10 +924,10 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
-    <script src="{{ asset('dist/js/condition.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/condition.min.js') }}"></script>
     <!-- date range picker Js -->
-    <script src="{{ asset('dist/js/moment.min.js') }}"></script>
-    <script src="{{ asset('dist/plugins/bootstrap-daterangepicker/daterangepicker.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/popup.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/moment.min.js') }}"></script>
+    <script src="{{ asset('public/dist/plugins/bootstrap-daterangepicker/daterangepicker.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/popup.min.js') }}"></script>
 @endsection

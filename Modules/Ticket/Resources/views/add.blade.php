@@ -115,9 +115,9 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('datta-able/plugins/summer-note/summernote-lite.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
-    <script src="{{ asset('datta-able/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/plugins/summer-note/summernote-lite.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
     <script src="{{ Module::asset('ticket:js/message.min.js') }}"></script>
     {!! translateValidationMessages() !!}
     <script>

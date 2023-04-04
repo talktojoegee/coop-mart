@@ -3,7 +3,7 @@
 @section('css')
     {{-- Select2  --}}
     <!--custom css-->
-    <link rel="stylesheet" href="{{ asset('datta-able/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/datta-able/plugins/select2/css/select2.min.css') }}">
 
 @endsection
 
@@ -80,7 +80,7 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('datta-able/plugins/select2/js/select2.full.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/attribute.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/attribute.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
 @endsection

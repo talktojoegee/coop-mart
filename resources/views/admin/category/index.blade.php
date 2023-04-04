@@ -2,7 +2,7 @@
 @section('page_title', __('Categories'))
 @section('css')
     <!--custom css-->
-    <link rel="stylesheet" href="{{ asset('dist/plugins/jstree/jstree.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/plugins/jstree/jstree.min.css') }}">
     <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
 @endsection
 @section('content')
@@ -200,9 +200,9 @@
 
 @endsection
 @section('js')
-    <script src="{{ asset('dist/plugins/jstree/jstree.min.js') }}"></script>
-    <script src="{{ asset('datta-able/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/common.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/category.min.js') }}"></script>
+    <script src="{{ asset('public/dist/plugins/jstree/jstree.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/common.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/category.min.js') }}"></script>
 @endsection

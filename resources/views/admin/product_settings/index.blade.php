@@ -3,7 +3,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ Module::asset('cms:css/style.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dist/css/product.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/css/product.min.css') }}">
 @endsection
 
 @section('content')
@@ -552,7 +552,7 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
-    <script src="{{ asset('dist/js/condition.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/product-setting.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/condition.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/product-setting.min.js') }}"></script>
 @endsection

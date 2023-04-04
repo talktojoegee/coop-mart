@@ -2,10 +2,10 @@
 @section('page_title', __('Slide'))
 @section('css')
     <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dist/plugins/lightbox/css/lightbox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/plugins/lightbox/css/lightbox.min.css') }}">
 
     {{-- Color picker --}}
-    <link rel="stylesheet" href="{{ asset('datta-able/plugins/mini-color/css/jquery.minicolors.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/datta-able/plugins/mini-color/css/jquery.minicolors.min.css') }}">
 @endsection
 @section('content')
     <div class="col-sm-12 list-container" id="slide-add-container">
@@ -104,12 +104,12 @@
 
 @endsection
 @section('js')
-    <script src="{{ asset('dist/plugins/lightbox/js/lightbox.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
-    <script src="{{ asset('dist/js/condition.min.js') }}"></script>
+    <script src="{{ asset('public/dist/plugins/lightbox/js/lightbox.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/condition.min.js') }}"></script>
 
     <!-- minicolors Js -->
-    <script src="{{ asset('datta-able/plugins/mini-color/js/jquery.minicolors.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/plugins/mini-color/js/jquery.minicolors.min.js') }}"></script>
 
     <script src="{{ Module::asset('cms:js/slider.min.js') }}"></script>
 @endsection

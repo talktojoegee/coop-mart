@@ -2,8 +2,8 @@
 @section('page_title', __('Edit :x', ['x' => __('Refund')]))
 @section('css')
 {{-- Select2 --}}
-  <link rel="stylesheet" type="text/css" href="{{ asset('datta-able/plugins/select2/css/select2.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('dist/plugins/lightbox/css/lightbox.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('public/datta-able/plugins/select2/css/select2.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('public/dist/plugins/lightbox/css/lightbox.min.css') }}">
 @endsection
 
 @section('content')
@@ -230,9 +230,9 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('datta-able/plugins/select2/js/select2.full.min.js') }}"></script>
-    <script src="{{ asset('dist/plugins/lightbox/js/lightbox.min.js')}}"></script>
-    <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/delete-modal.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/refund.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('public/dist/plugins/lightbox/js/lightbox.min.js')}}"></script>
+    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/delete-modal.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/refund.min.js') }}"></script>
 @endsection

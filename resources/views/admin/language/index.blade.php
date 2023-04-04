@@ -2,8 +2,8 @@
 @section('page_title', __('Languages'))
 @section('css')
     {{-- Data table --}}
-    <link rel="stylesheet" href="{{ asset('dist/plugins/Responsive-2.2.5/css/responsive.dataTables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dist/css/product.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/plugins/Responsive-2.2.5/css/responsive.dataTables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/css/product.min.css') }}">
 @endsection
 
 @section('content')
@@ -264,9 +264,9 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('dist/plugins/DataTables-1.10.21/js/jquery.dataTablesCus.min.js') }}"></script>
-    <script src="{{ asset('dist/plugins/Responsive-2.2.5/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/common.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/settings.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('public/dist/plugins/DataTables-1.10.21/js/jquery.dataTablesCus.min.js') }}"></script>
+    <script src="{{ asset('public/dist/plugins/Responsive-2.2.5/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/common.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/settings.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
 @endsection

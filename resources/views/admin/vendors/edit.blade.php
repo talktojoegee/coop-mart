@@ -2,7 +2,7 @@
 @section('page_title', __('Edit :x', ['x' => __('Vendor')]))
 @section('css')
     {{-- LightBox --}}
-    <link rel="stylesheet" href="{{ asset('dist/plugins/lightbox/css/lightbox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/plugins/lightbox/css/lightbox.min.css') }}">
     {{-- Media manager --}}
     <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
 
@@ -226,6 +226,6 @@
         "use strict";
         var vendor_id = '{{ isset($shops[0]->vendor_id) ? $shops[0]->vendor_id : null }}';
     </script>
-    <script src="{{ asset('dist/js/custom/vendors.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/validation.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/vendors.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
 @endsection

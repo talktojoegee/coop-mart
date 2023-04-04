@@ -14,15 +14,15 @@
     @if(!empty($favicon))
         <link rel='shortcut icon' href="{{ $favicon }}" type='image/x-icon' />
     @endif
-    <link rel="stylesheet" href="{{ asset('datta-able/fonts/fontawesome/css/fontawesome-all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('datta-able/plugins/animation/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/datta-able/fonts/fontawesome/css/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/datta-able/plugins/animation/css/animate.min.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('datta-able/plugins/bootstrap-v5/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('datta-able/css/style.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('datta-able/fonts/feather/css/feather.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('datta-able/plugins/jquery-scrollbar/css/jquery.scrollbar.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('datta-able/fonts/datta/datta-icon.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('datta-able/plugins/jquery-scrollbar/css/perfect-scrollbar.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/datta-able/plugins/bootstrap-v5/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/datta-able/css/style.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/datta-able/fonts/feather/css/feather.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/datta-able/plugins/jquery-scrollbar/css/jquery.scrollbar.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/datta-able/fonts/datta/datta-icon.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/datta-able/plugins/jquery-scrollbar/css/perfect-scrollbar.min.css') }}">
     <script type="text/javascript">
         'use strict';
         var SITE_URL              = "{{ URL::to('/') }}";
@@ -83,12 +83,12 @@
             var loginNeeded = false;
     </script>
     @yield('js')
-    <script src="{{ asset('datta-able/plugins/bootstrap-v5/js/popper.min.js') }}"></script>
-    <script src="{{ asset('datta-able/plugins/bootstrap-v5/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('datta-able/plugins/bootstrap-v5/js/slim.min.js') }}"></script>
-    <script src="{{ asset('datta-able/plugins/bootstrap-v5/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('datta-able/js/pcoded.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/site/login.min.js')}}"></script>
-    <script src="{{ asset('dist/js/custom/site/be-seller.min.js')}}"></script>
+    <script src="{{ asset('public/datta-able/plugins/bootstrap-v5/js/popper.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/plugins/bootstrap-v5/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/plugins/bootstrap-v5/js/slim.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/plugins/bootstrap-v5/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/js/pcoded.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/site/login.min.js')}}"></script>
+    <script src="{{ asset('public/dist/js/custom/site/be-seller.min.js')}}"></script>
 </body>
 </html>
