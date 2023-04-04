@@ -3,7 +3,7 @@
 @section('css')
     <!--custom css-->
     <link rel="stylesheet" href="{{ asset('public/dist/plugins/jstree/jstree.min.css') }}">
-    <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
 @endsection
 @section('content')
     <!-- Main content -->

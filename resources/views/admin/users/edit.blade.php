@@ -2,7 +2,7 @@
 @section('page_title', __('Edit :x', ['x' => __('User')]))
 @section('css')
     <link rel="stylesheet" href="{{ asset('public/dist/plugins/lightbox/css/lightbox.min.css') }}">
-    <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/dist/css/user-list.min.css') }}">
 @endsection
 @section('content')

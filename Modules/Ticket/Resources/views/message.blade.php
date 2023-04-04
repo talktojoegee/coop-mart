@@ -64,10 +64,10 @@
 </div>
 
 @push('styles')
-    <link rel="stylesheet" href="{{ Module::asset('ticket:css/chat-widget.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Modules/Ticket/Resources/assets/css/chat-widget.min.css') }}">
 @endpush
 
 @push('scripts')
     <script src="{{ asset('public/dist/js/xss.min.js') }}"></script>
-    <script src="{{ Module::asset('ticket:js/chat.min.js') }}"></script>
+    <script src="{{ asset('Modules/Ticket/Resources/assets/js/chat.min.js') }}"></script>
 @endpush

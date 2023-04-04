@@ -2,7 +2,7 @@
 @section('page_title', __('Create :x', ['x' => __('Vendor')]))
 
 @section('css')
-    <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
 @endsection
 
 @section('content')

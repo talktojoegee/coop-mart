@@ -4,7 +4,7 @@
     {{-- LightBox --}}
     <link rel="stylesheet" href="{{ asset('public/dist/plugins/lightbox/css/lightbox.min.css') }}">
     {{-- Media manager --}}
-    <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
 
 @endsection
 

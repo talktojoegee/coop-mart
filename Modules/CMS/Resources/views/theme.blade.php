@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('css')
-<link rel="stylesheet" href="{{ Module::asset('cms:css/style.min.css') }}">
+<link rel="stylesheet" href="{{ asset('Modules/CMS/Resources/assets/css/style.min.css') }}">
 @endsection
 @section('content')
 <div class="col-sm-12">

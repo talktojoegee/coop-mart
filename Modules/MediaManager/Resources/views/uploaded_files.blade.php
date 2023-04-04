@@ -2,8 +2,8 @@
 @section('page_title', __('Media Manager'))
 @section('css')
     <link rel="stylesheet" href="{{ asset('datta-able/plugins/fileupload/css/fileupload.min.css') }}">
-    <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/style.min.css') }}">
-    <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/style.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
 @endsection
 @section('content')
 
@@ -169,5 +169,5 @@
 @section('js')
     <script src="{{ asset('datta-able/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
     <script src="{{ asset('datta-able/plugins/fileupload/js/dropzone.min.js') }}"></script>
-    <script src="{{ Module::asset('mediamanager:js/media-manager.min.js') }}"></script>
+    <script src="{{ asset('Modules/MediaManager/Resources/assets/js/media-manager.min.js') }}"></script>
 @endsection

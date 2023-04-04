@@ -111,15 +111,15 @@
 @endsection
 
 @push('styles')
-    <link href="{{ Module::asset('cms:css/draganddrop.min.css') }}" rel="stylesheet">
-    <link href="{{ Module::asset('cms:css/style.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('Modules/CMS/Resources/assets/css/draganddrop.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('Modules/CMS/Resources/assets/css/style.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('public/dist/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}">
 @endpush
 
 @section('js')
     <script src="{{ asset('public/dist/plugins/lightbox/js/lightbox.min.js') }}"></script>
     <script src="{{ asset('public/dist/js/moment.min.js') }}"></script>
-    <script src="{{ Module::asset('cms:js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('Modules/CMS/Resources/assets/js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('public/dist/plugins/bootstrap-daterangepicker/daterangepicker.min.js') }}"></script>
 
     <script>
@@ -138,6 +138,6 @@
     </script>
 
     <script src="{{ asset('public/dist/js/xss.min.js') }}"></script>
-    <script src="{{ Module::asset('cms:js/builder.min.js') }}"></script>
-    <script src="{{ Module::asset('cms:js/query.min.js') }}"></script>
+    <script src="{{ asset('Modules/CMS/Resources/assets/js/builder.min.js') }}"></script>
+    <script src="{{ asset('Modules/CMS/Resources/assets/js/query.min.js') }}"></script>
 @endsection

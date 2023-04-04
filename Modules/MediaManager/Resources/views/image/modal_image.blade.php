@@ -1,6 +1,6 @@
 @section('css')
-    <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/style.min.css') }}">
-    <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/style.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
 @endsection
 <div class="modal fade all-image-modal" id="exampleModalCenter"
     tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-keyboard="false"
@@ -109,7 +109,7 @@
     </div>
 </div>
 
-<script src="{{ Module::asset('mediamanager:js/media-manager.min.js') }}"></script>
+<script src="{{ asset('Modules/MediaManager/Resources/assets/js/media-manager.min.js') }}"></script>
 <script type="text/javascript">
     'use strict';
     var maxFileSize = "{{ $maxFileSize }}";

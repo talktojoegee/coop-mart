@@ -2,7 +2,7 @@
 @section('page_title', __('Company Settings'))
 @section('css')
     {{-- Media manager --}}
-    <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/dist/css/product.min.css') }}">
 @endsection
 

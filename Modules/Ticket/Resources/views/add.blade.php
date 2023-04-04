@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ asset('datta-able/plugins/summer-note/summernote-lite.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('dist/css/invoice-style.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('dist/css/summer-note-modal.min.css') }}">
-    <link rel="stylesheet" href="{{ Module::asset('mediamanager:css/media-manager.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
 @endsection
 @section('content')
     <!-- Main content -->
@@ -118,7 +118,7 @@
     <script src="{{ asset('public/datta-able/plugins/summer-note/summernote-lite.min.js') }}"></script>
     <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
     <script src="{{ asset('public/datta-able/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
-    <script src="{{ Module::asset('ticket:js/message.min.js') }}"></script>
+    <script src="{{ asset('Modules/Ticket/Resources/assets/js/message.min.js') }}"></script>
     {!! translateValidationMessages() !!}
     <script>
         'use strict';
