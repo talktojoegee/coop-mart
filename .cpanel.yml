@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    # - export DEPLOYPATH=/home/connexx1/public_html/
+    - export DEPLOYPATH=/home/coopeast/httpdocs/eshop/test/
+    - /bin/cp -R * $DEPLOYPATH
