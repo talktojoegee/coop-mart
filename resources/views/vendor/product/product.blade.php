@@ -88,7 +88,7 @@
 
 @section('js')
     <!-- summernote JS -->
-    <script src="{{ asset('datta-able/plugins/summer-note/summernote-lite.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/plugins/summer-note/summernote-lite.min.js') }}"></script>
     <!-- sweetalert JS -->
     <script src="{{ asset('public/datta-able/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
     <script src="{{ asset('public/dist/js/custom/delete-modal.min.js') }}"></script>

@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 @section('page_title', __('Media-Manager'))
 @section('css')
-  <link rel="stylesheet" href="{{ asset('datta-able/plugins/fileupload/css/fileupload.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('public/datta-able/plugins/fileupload/css/fileupload.min.css') }}">
 @endsection
 @section('content')
 <div class="col-sm-12">
@@ -33,11 +33,11 @@
 @endsection
 @section('js')
 
-<script src="{{ asset('datta-able/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
+<script src="{{ asset('public/datta-able/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
 <script type="text/javascript">
     'use strict';
     var maxFileSize = "{{ $maxFileSize }}";
     var acceptedFiles = "{{ $acceptedFiles }}";
   </script>
-<script src="{{ asset('dist/plugins/dropzone/dropzone.min.js') }}"></script>
+<script src="{{ asset('public/dist/plugins/dropzone/dropzone.min.js') }}"></script>
 @endsection

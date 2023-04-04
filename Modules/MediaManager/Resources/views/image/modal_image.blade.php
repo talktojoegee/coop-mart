@@ -115,5 +115,5 @@
     var maxFileSize = "{{ $maxFileSize }}";
     var acceptedFiles = "{{ $acceptedFilesNew }}";
 </script>
-<script src="{{ asset('datta-able/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
-<script src="{{ asset('dist/plugins/dropzone/dropzone.min.js') }}"></script>
+<script src="{{ asset('public/datta-able/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
+<script src="{{ asset('public/dist/plugins/dropzone/dropzone.min.js') }}"></script>

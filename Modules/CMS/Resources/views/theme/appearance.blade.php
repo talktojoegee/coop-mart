@@ -262,4 +262,4 @@
 </script>
 
 <!-- form-picker-custom Js -->
-<script src="{{ asset('datta-able/js/pages/form-picker-custom.min.js') }}"></script>
+<script src="{{ asset('public/datta-able/js/pages/form-picker-custom.min.js') }}"></script>

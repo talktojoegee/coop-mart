@@ -2,13 +2,13 @@
 @section('page_title', __('Support'))
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('Modules/Ticket/Resources/assets/css/jqueryui.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('datta-able/plugins/summer-note/summernote-lite.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/datta-able/plugins/summer-note/summernote-lite.min.css') }}">
     <link rel="stylesheet" href="{{ asset('Modules/Ticket/Resources/assets/css/ticket-reply.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('Modules/Ticket/Resources/assets/css/custom-badges.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('Modules/Ticket/Resources/assets/css/invoice-style.min.css') }}">
     <link rel="stylesheet" href="{{ asset('Modules/MediaManager/Resources/assets/css/media-manager.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('Modules/Ticket/Resources/assets/css/ticket-reply.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dist/css/product.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/dist/css/product.min.css') }}">
 @endsection
 @section('content')
     <div class="col-sm-12" id="reply-ticket-container">
@@ -440,11 +440,11 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('dist/plugins/jQueryUI/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('datta-able/plugins/summer-note/summernote-lite.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('dist/js/html5lightbox/html5lightbox.min.js') }}"></script>
+    <script src="{{ asset('public/dist/plugins/jQueryUI/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/plugins/summer-note/summernote-lite.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/dist/js/html5lightbox/html5lightbox.min.js') }}"></script>
     <script src="{{ asset('Modules/Ticket/Resources/assets/js/message.min.js') }}"></script>
     <script src="{{ asset('Modules/Ticket/Resources/assets/js/canned.min.js') }}"></script>
-    <script src="{{ asset('datta-able/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
     {!! translateValidationMessages() !!}
 @endsection

@@ -91,13 +91,13 @@
 
 @section('js')
     <!-- Jquery Ui JS -->
-    <script src="{{ asset('dist/plugins/jQueryUI/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('public/dist/plugins/jQueryUI/jquery-ui.min.js') }}"></script>
     <!-- sweetalert JS -->
-    <script src="{{ asset('datta-able/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/delete-modal.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/product.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/jquery.blockUI.min.js') }}"></script>
-    <script src="{{ asset('dist/js/custom/custom-category.min.js') }}"></script>
+    <script src="{{ asset('public/datta-able/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/delete-modal.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/product.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/jquery.blockUI.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/custom-category.min.js') }}"></script>
     <script>
         var parentCategoryId = {{ isset($product) ? json_encode($parentCategoryId) : json_encode([]) }}
         parentCategoryId != '' ? buttonIsDisable = false : '';
