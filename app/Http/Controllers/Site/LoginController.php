@@ -155,8 +155,9 @@ class LoginController extends Controller
             $request['email'] = $email;
             $request['password'] = $password;
             $this->registerNewMember($request);
-            return 'Done';*/
-            //return $collection['name'];*/
+            $request['password'] = $request->password;
+            return $request;
+            return $collection['name'];*/
             /*if($response->getStatusCode() == 200){
                 return 'sucess';
             }else{
@@ -189,8 +190,8 @@ class LoginController extends Controller
             $email =  $collection['email'];
             $name =  $collection['name'];
             $checkUser = User::getUserByEmail($email);
-            if(empty($checkUser)){
-                $user = User::where('email', $request->email)->first();
+            if(!empty($checkUser)){
+                $user = User::where('email', $email)->first();
                 if (empty($user) || ! \Hash::check($request->password, $user->password)) {
                     (new ActivityLogService())->userLogin('failed', 'Incorrect');
                     return ['status' => 0, 'message' => __('Member ID or Password is incorrect!')];
@@ -200,6 +201,8 @@ class LoginController extends Controller
                     (new ActivityLogService())->userLogin('failed', $user->status);
                     return ['status' => 0, 'message' => $message[$user->status]];
                 }
+                $request['email'] = $email;
+                $request['password'] = $request->password;
 
                 if (!Auth::guard('user')->attempt($request->only('email', 'password'))) {
                     (new ActivityLogService())->userLogin('failed', 'Invalid');
@@ -234,7 +237,7 @@ class LoginController extends Controller
                 $request['email'] = $email;
                 $request['password'] = $request->password;
                 $this->registerNewMember($request);
-                if (!Auth::guard('user')->attempt($request->only('email', 'password'))) {
+                if (!Auth::guard('user')->attempt(['email'=>$email, 'password'=>$request->raw_password])) {
                     (new ActivityLogService())->userLogin('failed', 'Invalid');
                     return ['status' => 0, 'message' => __('Invalid User')];
                 }
