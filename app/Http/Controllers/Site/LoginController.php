@@ -205,7 +205,6 @@ class LoginController extends Controller
                     (new ActivityLogService())->userLogin('failed', 'Invalid');
                     return ['status' => 0, 'message' => __('Invalid User')];
                 }
-
                 (new ActivityLogService())->userLogin('success', 'Login successful');
 
                 // Cart and compare data transfer
@@ -235,6 +234,32 @@ class LoginController extends Controller
                 $request['email'] = $email;
                 $request['password'] = $request->password;
                 $this->registerNewMember($request);
+                if (!Auth::guard('user')->attempt($request->only('email', 'password'))) {
+                    (new ActivityLogService())->userLogin('failed', 'Invalid');
+                    return ['status' => 0, 'message' => __('Invalid User')];
+                }
+                (new ActivityLogService())->userLogin('success', 'Login successful');
+
+                // Cart and compare data transfer
+                Cart::cartDataTransfer();
+                Compare::compareDataTransfer();
+
+                // Show welcome message when enter user dashboard first time after login.
+                session()->put('welcomeUser', true);
+                session()->put('vendorId', optional(auth()->user()->vendor())->vendor_id);
+
+                if (!is_null($request->remember_me)) {
+                    $ckkey = encrypt($this->ckname . Auth::user()->id . ".user");
+                    Cookie::queue($this->ckname, $ckkey, 2592000);
+                }
+                // Wishlist store if user try without login
+                if (!empty($_COOKIE['product_id'])) {
+                    if (!(new Wishlist)->checkExistence(auth()->user()->id, $_COOKIE['product_id'])) {
+                        (new Wishlist)->store(['product_id' => $_COOKIE['product_id'], 'user_id' => auth()->user()->id]);
+                    }
+                    setcookie("product_id", "", time() - 3600);
+                }
+                return ['status' => 1, 'message' => __("Account created! You are now logged in!")];
             }
 
         }else{
