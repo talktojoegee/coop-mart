@@ -143,8 +143,8 @@ class LoginController extends Controller
         try{
             $url = "https://www.coopeastngr.com/api/memval.asp?uid={$memberId}&sid={$sid}&pw={$password}";
             $client = new Client();
-            //return $client->get($url);
-            $response =   $client->get($url);
+            return $client->get($url);
+            /*$response =   $client->get($url);
             $response_data =  json_decode((string) $response->getBody(), true);
             $collection = collect($response_data);
             $email =  $collection['email'];
@@ -155,7 +155,7 @@ class LoginController extends Controller
             $request['email'] = $email;
             $request['password'] = $password;
             $this->registerNewMember($request);
-            return 'Done';
+            return 'Done';*/
             //return $collection['name'];*/
             /*if($response->getStatusCode() == 200){
                 return 'sucess';
