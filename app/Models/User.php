@@ -57,6 +57,7 @@ class User extends Authenticatable
         'email',
         'password',
         'phone',
+        'member_id',
         'birthday',
         'address',
         'gender',
@@ -903,5 +904,13 @@ class User extends Authenticatable
             ->logOnlyDirty()
             ->dontSubmitEmptyLogs()
             ->setDescriptionForEvent(fn (string $eventName) => "User model has been {$eventName}");
+    }
+
+    public static function getUserByEmail($email){
+        return User::where('email', $email)->first();
+    }
+
+    public static function getUserByMemberID($memberId){
+        return User::where('member_id', $memberId)->first();
     }
 }

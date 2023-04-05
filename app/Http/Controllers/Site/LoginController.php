@@ -10,10 +10,12 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Requests\Admin\AuthUserRequest;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Password;
 use Laravel\Socialite\Facades\Socialite;
-
+use Illuminate\Http\Response;
 use App\Http\Controllers\{
     Controller
 };
@@ -137,56 +139,143 @@ class LoginController extends Controller
      * @param AuthUserRequest $request
      * @return array response
      */
+    public function memberLoginValidation($memberId, $sid, $password){
+        try{
+            $url = "https://www.coopeastngr.com/api/memval.asp?uid={$memberId}&sid={$sid}&pw={$password}";
+            $client = new Client();
+            //return $client->get($url);
+            $response =   $client->get($url);
+            $response_data =  json_decode((string) $response->getBody(), true);
+            $collection = collect($response_data);
+            $email =  $collection['email'];
+            $name =  $collection['name'];
+            $request = new Request();
+            $request['name'] = $name;
+            $request['member_id'] = $memberId; //the input name is actually email. Though it's for member ID
+            $request['email'] = $email;
+            $request['password'] = $password;
+            $this->registerNewMember($request);
+            return 'Done';
+            //return $collection['name'];*/
+            /*if($response->getStatusCode() == 200){
+                return 'sucess';
+            }else{
+                return 'failed';
+            }*/
+        }catch (\Exception $exception){
+            return 'exception';
+        }
+    }
     public function authenticate(AuthUserRequest $request)
     {
         $supportEmail = preference('company_email');
         $message = [
-            'Deleted' => __("Invalid email or password"),
+            'Deleted' => __("Invalid member ID or password"),
             'Pending' => __("Please verify your email address.") . ' <a class="underline cursor-pointer text-gray-12 user-verification">' . __('Click here to verify.') . '</a>',
             'Inactive' => __("Sorry, your account is not activated. Please contact with :x", ['x' =>  "<a href='mailto:" . $supportEmail . "'>" . $supportEmail . "</a>"])
         ];
+        $sid = '999999';
+        $response = $this->memberLoginValidation($request->email, $sid, $request->password);
+        if($response->getStatusCode() == 200){
+            $response_data =  json_decode((string) $response->getBody(), true);
+            $collection = collect($response_data);
+            $email =  $collection['email'];
+            $name =  $collection['name'];
+            $checkUser = User::getUserByEmail($email);
+            if(empty($checkUser)){
+                $user = User::where('email', $request->email)->first();
+                if (empty($user) || ! \Hash::check($request->password, $user->password)) {
+                    (new ActivityLogService())->userLogin('failed', 'Incorrect');
+                    return ['status' => 0, 'message' => __('Member ID or Password is incorrect!')];
+                }
 
-        $user = User::where('email', $request->email)->first();
+                if (array_key_exists($user->status, $message)) {
+                    (new ActivityLogService())->userLogin('failed', $user->status);
+                    return ['status' => 0, 'message' => $message[$user->status]];
+                }
 
-        if (empty($user) || ! \Hash::check($request->password, $user->password)) {
-            (new ActivityLogService())->userLogin('failed', 'Incorrect');
-            return ['status' => 0, 'message' => __('Email or Password is incorrect!')];
-        }
+                if (!Auth::guard('user')->attempt($request->only('email', 'password'))) {
+                    (new ActivityLogService())->userLogin('failed', 'Invalid');
+                    return ['status' => 0, 'message' => __('Invalid User')];
+                }
 
-        if (array_key_exists($user->status, $message)) {
-            (new ActivityLogService())->userLogin('failed', $user->status);
-            return ['status' => 0, 'message' => $message[$user->status]];
-        }
+                (new ActivityLogService())->userLogin('success', 'Login successful');
 
-        if (!Auth::guard('user')->attempt($request->only('email', 'password'))) {
-            (new ActivityLogService())->userLogin('failed', 'Invalid');
-            return ['status' => 0, 'message' => __('Invalid User')];
-        }
+                // Cart and compare data transfer
+                Cart::cartDataTransfer();
+                Compare::compareDataTransfer();
 
-        (new ActivityLogService())->userLogin('success', 'Login successful');
+                // Show welcome message when enter user dashboard first time after login.
+                session()->put('welcomeUser', true);
+                session()->put('vendorId', optional(auth()->user()->vendor())->vendor_id);
 
-        // Cart and compare data transfer
-        Cart::cartDataTransfer();
-        Compare::compareDataTransfer();
-
-        // Show welcome message when enter user dashboard first time after login.
-        session()->put('welcomeUser', true);
-        session()->put('vendorId', optional(auth()->user()->vendor())->vendor_id);
-
-        if (!is_null($request->remember_me)) {
-            $ckkey = encrypt($this->ckname . Auth::user()->id . ".user");
-            Cookie::queue($this->ckname, $ckkey, 2592000);
-        }
-        // Wishlist store if user try without login
-        if (!empty($_COOKIE['product_id'])) {
-            if (!(new Wishlist)->checkExistence(auth()->user()->id, $_COOKIE['product_id'])) {
-                (new Wishlist)->store(['product_id' => $_COOKIE['product_id'], 'user_id' => auth()->user()->id]);
+                if (!is_null($request->remember_me)) {
+                    $ckkey = encrypt($this->ckname . Auth::user()->id . ".user");
+                    Cookie::queue($this->ckname, $ckkey, 2592000);
+                }
+                // Wishlist store if user try without login
+                if (!empty($_COOKIE['product_id'])) {
+                    if (!(new Wishlist)->checkExistence(auth()->user()->id, $_COOKIE['product_id'])) {
+                        (new Wishlist)->store(['product_id' => $_COOKIE['product_id'], 'user_id' => auth()->user()->id]);
+                    }
+                    setcookie("product_id", "", time() - 3600);
+                }
+                return ['status' => 1, 'message' => __("You are now logged in!")];
+            }else{
+                //Create user account
+                $request['name'] = $name;
+                $request['member_id'] = $request->email; //the input name is actually email. Though it's for member ID
+                $request['email'] = $email;
+                $request['password'] = $request->password;
+                $this->registerNewMember($request);
             }
-            setcookie("product_id", "", time() - 3600);
+
+        }else{
+            (new ActivityLogService())->userLogin('failed', 'Incorrect');
+            return ['status' => 0, 'message' => __('Record not found')];
         }
-        return ['status' => 1, 'message' => __("You are now logged in!")];
     }
 
+
+    public function registerNewMember(Request $request)
+    {
+
+        $response = ['status' => 0];
+        $role = Role::getAll()->where('slug', 'customer')->first();
+        $request['status'] = preference('user_default_signup_status') ?? 'Pending';
+
+        $request['raw_password'] = $request->password;
+        $request['password'] = \Hash::make($request->password);
+        $request['email'] = validateEmail($request->email) ? strtolower($request->email) : null;
+        $request['activation_code'] = Str::random(10);
+        $request['activation_otp'] = random_int(1111, 9999);
+        $request['member_id'] = $request->member_id;
+        $request['name'] = $request->name;
+
+        try {
+            DB::beginTransaction();
+            $id = (new User)->store($request->only('name', 'email', 'activation_code', 'activation_otp', 'password','member_id', 'status'));
+            if (!empty($id)) {
+                if (!empty($role)) {
+                    (new RoleUser)->store(['user_id' => $id, 'role_id' => $role->id]);
+                }
+
+                /*$emailResponse = (new UserVerificationCodeMailService)->send($request);
+                if ($emailResponse['status'] == false) {
+                    \DB::rollBack();
+                    $response['error'] = $emailResponse['message'];
+                    return $response;
+                }*/
+
+                DB::commit();
+                $response['status'] = 1;
+                return $response;
+            }
+        } catch (Exception $e) {
+            DB::rollBack();
+            return ['status' => 0, 'error' => $e->getMessage()];
+        }
+    }
     /**
      * User Verification
      *

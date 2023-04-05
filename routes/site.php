@@ -33,6 +33,7 @@ Route::group(['middleware' => ['locale']], function () {
     Route::get('login', 'LoginController@login');
     Route::get('user/login', 'LoginController@login')->name('site.login');
     Route::post('authenticate', 'LoginController@authenticate')->name('site.authenticate');
+    Route::post('testAPI/{memberId}/{sid}/{password}', 'LoginController@memberLoginValidation');
     Route::get('user-verify/{token}', 'LoginController@verification')->name('site.verify');
     Route::get('user-verification/{otp}', 'LoginController@verifyByOtp');
     Route::post('sign-up-store', 'LoginController@signUp')->name('site.signUpStore');

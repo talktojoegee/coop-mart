@@ -29,7 +29,7 @@
                         <form method="post" id="loginForm">
                             @csrf
                             <div class="mb-3 md:mb-18p relative">
-                                <input class="w-full border border-gray-2 rounded form-control pl-14 md:pl-16 roboto-regular font-normal text-gray-10 text-13 md:text-15 md:h-52p focus:border-gray-12" type="email" id="login-email" name="email" placeholder="{{ __('Email Address') }}" required oninvalid="this.setCustomValidity('{{ __('This field is required.') }}')" data-type-mismatch="{{ __('Enter a valid :x.', [ 'x' => strtolower(__('Email'))]) }}">
+                                <input class="w-full border border-gray-2 rounded form-control pl-14 md:pl-16 roboto-regular font-normal text-gray-10 text-13 md:text-15 md:h-52p focus:border-gray-12" type="text" id="login-email" name="email" placeholder="{{ __('Member ID') }}" required oninvalid="this.setCustomValidity('{{ __('This field is required.') }}')" data-type-mismatch="{{ __('Enter a valid :x.', [ 'x' => strtolower(__('Email'))]) }}">
                                 <span class="absolute border-r border-gray-2 pl-1.5 pr-3 top-2 h-26p left-2 md:top-3 md:left-3 md:h-30p">
                                     <svg class="mt-1.5 w-4 h-4 md:w-5 md:h-5" xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
                                         <path d="M16.3449 17.4054C16.8977 17.2902 17.2269 16.7117 16.9522 16.2183C16.3466 15.1307 15.3926 14.1749 14.1722 13.4465C12.6004 12.5085 10.6745 12 8.69333 12C6.71213 12 4.78628 12.5085 3.21448 13.4465C1.99405 14.1749 1.04002 15.1307 0.434441 16.2183C0.159743 16.7117 0.488979 17.2902 1.04179 17.4054C6.0886 18.4572 11.2981 18.4572 16.3449 17.4054Z" fill="#898989"/>
@@ -153,10 +153,10 @@
                         <div id="send-email-form" class="form">
                             <div class="text-center -mt-2">
                                 <h1 class="uppercase dm-bold font-bold text-gray-12 text-base md:text-xl">{{ __('Reset your password') }}</h1>
-                                <p class="text-gray-10 text-sm md:text-base mt-1">{{ __('Enter your email to send password reset code') }}</p>
+                                <p class="text-gray-10 text-sm md:text-base mt-1">{{ __('Enter your Member ID to send password reset code') }}</p>
                             </div>
                             <div class="mb-3 md:mb-18p relative mt-9">
-                                <input class="w-full border border-gray-2 rounded form-control pl-14 md:pl-16 roboto-regular font-normal text-gray-10 text-13 md:text-15 md:h-52p focus:border-gray-12" type="email" name="email" placeholder="{{ __('Email Address') }}" required oninvalid="this.setCustomValidity('{{ __('This field is required.') }}')" data-type-mismatch="{{ __('Enter a valid :x.', [ 'x' => strtolower(__('Email'))]) }}">
+                                <input class="w-full border border-gray-2 rounded form-control pl-14 md:pl-16 roboto-regular font-normal text-gray-10 text-13 md:text-15 md:h-52p focus:border-gray-12" type="text" name="email" placeholder="{{ __('Member ID') }}" required oninvalid="this.setCustomValidity('{{ __('This field is required.') }}')" data-type-mismatch="{{ __('Enter a valid :x.', [ 'x' => strtolower(__('Email'))]) }}">
                                 <label class="send-email-form text-red-400"></label>
                                 <span class="absolute border-r border-gray-2 pl-1.5 pr-3 top-2 h-26p left-2 md:top-3 md:left-3 md:h-30p">
                                     <svg class="mt-1.5 w-4 h-4 md:w-5 md:h-5" xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
@@ -346,7 +346,7 @@
                                     <span class="name-validation-error block text-red-500 text-xs md:text-sm mt-1"></span>
                                 </div>
                                 <div class="mb-3 md:mb-5 relative">
-                                <input class="w-full border border-gray-2 rounded form-control pl-14 md:pl-16 roboto-regular font-normal text-gray-10 registration-email text-13 md:text-15 md:h-52p focus:border-gray-12" type="email" name="email" placeholder="{{ __('Email Address') }}" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
+                                <input class="w-full border border-gray-2 rounded form-control pl-14 md:pl-16 roboto-regular font-normal text-gray-10 registration-email text-13 md:text-15 md:h-52p focus:border-gray-12" type="text" name="email" placeholder="{{ __('Member ID') }}" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
                                     <span class="absolute border-r border-gray-2 pl-1.5 pr-3 top-2 h-26p left-2 md:top-3 md:left-3 md:h-30p">
                                         <svg class="mt-1.5 w-4 h-4 md:w-5 md:h-5" xmlns="http://www.w3.org/2000/svg" width="18" height="14" viewBox="0 0 18 14" fill="none">
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M0.87868 0.87868C0 1.75736 0 3.17157 0 6V8C0 10.8284 0 12.2426 0.87868 13.1213C1.75736 14 3.17157 14 6 14H12C14.8284 14 16.2426 14 17.1213 13.1213C18 12.2426 18 10.8284 18 8V6C18 3.17157 18 1.75736 17.1213 0.87868C16.2426 0 14.8284 0 12 0H6C3.17157 0 1.75736 0 0.87868 0.87868ZM3.5547 3.16795C3.09517 2.8616 2.4743 2.98577 2.16795 3.4453C1.8616 3.90483 1.98577 4.5257 2.4453 4.83205L7.8906 8.46225C8.5624 8.91012 9.4376 8.91012 10.1094 8.46225L15.5547 4.83205C16.0142 4.5257 16.1384 3.90483 15.8321 3.4453C15.5257 2.98577 14.9048 2.8616 14.4453 3.16795L9 6.79815L3.5547 3.16795Z" fill="#898989"/>
@@ -475,19 +475,19 @@
     }
 @endphp
 <script>
-    var uppercase = "{!! $uppercase !!}";
-    var lowercase = "{!! $lowercase !!}";
-    var number = "{!! $number !!}";
-    var symbol = "{!! $symbol !!}";
-    var length = "{!! $length !!}";
-    var currentUrl = "{!! session('nextUrl') !!}";
-    var loginNeeded = "{!! session('loginRequired') ? 1 : 0 !!}";
-    var otpUrl = "{!! route('site.verification.otp') !!}";
-    var otpActive = "{!! \App\Models\User::userVerification('otp') !!}";
+    let uppercase = "{!! $uppercase !!}";
+    let lowercase = "{!! $lowercase !!}";
+    let number = "{!! $number !!}";
+    let symbol = "{!! $symbol !!}";
+    let length = "{!! $length !!}";
+    let currentUrl = "{!! session('nextUrl') !!}";
+    let loginNeeded = "{!! session('loginRequired') ? 1 : 0 !!}";
+    let otpUrl = "{!! route('site.verification.otp') !!}";
+    let otpActive = "{!! \App\Models\User::userVerification('otp') !!}";
 </script>
 @if(config('martvill.is_demo'))
     <script>
-        var demoCredentials = '{!! json_encode(config('martvill.credentials')) !!}';
+        let demoCredentials = '{!! json_encode(config('martvill.credentials')) !!}';
     </script>
 @endif
 @php
