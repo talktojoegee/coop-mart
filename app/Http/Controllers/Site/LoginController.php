@@ -166,8 +166,15 @@ class LoginController extends Controller
             return 'exception';
         }
     }
-    public function authenticate(AuthUserRequest $request)
+    public function authenticate(/*AuthUserRequest*/ Request $request)
     {
+        $this->validate($request,[
+            "email"=>"required",
+            "password"=>"required"
+        ],[
+            "email.required"=>"Member ID required",
+            "password.required"=>"Password required"
+        ]);
         $supportEmail = preference('company_email');
         $message = [
             'Deleted' => __("Invalid member ID or password"),
