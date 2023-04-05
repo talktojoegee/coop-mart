@@ -14,6 +14,7 @@ use App\Http\Resources\ProductDetailResource;
 use App\Models\{Address, Brand, Category, File, OrderMeta, Product, Review, Search};
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
+use Modules\Shop\Http\Models\Shop;
 use Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Session;
@@ -35,6 +36,10 @@ use DB;
 
 class SiteController extends Controller
 {
+
+    public function __construct(){
+        $this->shop = new Shop();
+    }
 
     /**
      * Homepage
