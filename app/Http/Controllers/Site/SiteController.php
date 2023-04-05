@@ -558,4 +558,12 @@ class SiteController extends Controller
 
         abort(404);
     }
+
+    public function showShops(){
+        $data['displayPrice'] = preference('display_price_in_shop');
+        $data['homeService'] = $homeService = new \Modules\CMS\Service\HomepageService;
+        $data['page'] = $homeService->home();
+        $data['shops'] = $this->shop->getShops();
+        return view('site.home.shops',$data);
+    }
 }
