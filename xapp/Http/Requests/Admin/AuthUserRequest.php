@@ -25,7 +25,8 @@ class AuthUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email|exists:users',
+            'email' => 'required|exists:users',
+            //'email' => 'required|email|exists:users',
             'password' => 'required',
             'gCaptcha' => isRecaptchaActive() ? 'required|captcha' : 'nullable'
         ];
