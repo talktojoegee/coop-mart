@@ -32,6 +32,7 @@ class StoreSellerRequest extends FormRequest
         return [
             'name'      => ['required', 'min:3', 'max:191'],
             'email'     => ['required', 'max:191', new CheckValidEmail],
+            //'email'     => ['required', 'max:191', new CheckValidEmail],
             'password'  => ['required', 'max:191', 'confirmed', new StrengthPassword],
             'phone'     => ['required', 'min:10', 'max:45', new CheckValidPhone],
             'logo'      => ['nullable', new CheckValidFile(getFileExtensions(3))],
