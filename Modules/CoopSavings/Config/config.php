@@ -5,7 +5,7 @@ return [
 
     'alias' => 'coopsavings',
 
-    'logo' => 'Modules/CoopSavings/Resources/assets/savings.png',
+    'logo' => 'Modules/CoopSavings/Resources/assets/coop.png',
 
     'options' => [
         ['label' => __('Settings'), 'type' => 'modal', 'url' => 'paystack.edit'],
