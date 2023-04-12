@@ -308,7 +308,8 @@ class GatewayController extends Controller
 
 
     public function coopsavingsConfirmation(Request $request){
-        $code = techDecrypt($request->code);
+
+        $code = $request->code; // techDecrypt($request->code);
         $purchaseData = PaymentLog::where('code', $code)->orderBy('id', 'desc')->first();
 
 
