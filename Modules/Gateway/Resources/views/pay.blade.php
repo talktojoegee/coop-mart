@@ -1,7 +1,22 @@
 @extends('gateway::layouts.master')
 
 @section('content')
-    @forelse ($gateways as $gateway)
+    <a href="#" class="pay-box">
+        <div class="grow">
+            <img class="image-2" src="{{ asset('public/dist/img/paystack.png') }}" alt="{{ __('Image') }}" />
+        </div>
+    </a>
+    <a href="#" class="pay-box">
+        <div class="grow">
+            <img class="image-2" src="{{ asset('public/dist/img/coop.png') }}" alt="{{ __('Image') }}" />
+        </div>
+    </a>
+    <a href="#" class="pay-box">
+        <div class="grow">
+            <img class="image-2" src="{{ asset('public/dist/img/coop.png') }}" alt="{{ __('Image') }}" />
+        </div>
+    </a>
+   {{-- @forelse ($gateways as $gateway)
         <a href="{{ route('gateway.pay', withOldQueryIntegrity(['gateway' => $gateway->alias])) }}" class="pay-box">
             <div class="grow">
                 <img class="image-2" src="{{ asset(config($gateway->alias . '.logo')) }}" alt="{{ __('Image') }}" />
@@ -13,5 +28,5 @@
                 <h3>{{ __('No gateway found.') }}</h3>
             </div>
         </a>
-    @endforelse
+    @endforelse--}}
 @endsection
