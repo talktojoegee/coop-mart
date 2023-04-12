@@ -97,8 +97,8 @@
             "image": [
                 "https://demo.martvill.techvill.net/Modules/Paystack/Resources/assets/thumbnail.png"
             ],
-            "price_type": "premium",
-            "price": "10$",
+            "price_type": "free",
+            "price": "Free",
             "url": "https://martvill.techvill.net",
             "version": "1.0",
             "require_version": "2.3",
