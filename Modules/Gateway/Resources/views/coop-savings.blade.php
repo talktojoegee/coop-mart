@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12">
             <h5>COOP Savings</h5>
-            <form action="{{route('coop_savings.process-coop_savings_payment')}}" method="POST">
+            <form action="{{route('gateway.coop_savings.process-coop_savings_payment')}}" method="POST">
                 @csrf
                 <div class="form-group">
                     <input type="hidden" name="memberId" value="{{Auth::user()->member_id}}">
