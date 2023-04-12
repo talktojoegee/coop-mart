@@ -328,6 +328,11 @@ class GatewayController extends Controller
             $response_data = json_decode((string)$loanApiResponse->getBody(), true);
             $loanCollection = collect($response_data);
         }
+        return view("gateway::coop-savings",[
+            'purchaseData'=>$purchaseData,
+            'savingsCollection'=>$savingsCollection,
+            'loanCollection'=>$loanCollection,
+        ]);
 
     }
 }
