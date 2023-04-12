@@ -32,8 +32,25 @@
         <div>
             {{--@include('gateway::partial.errors')--}}
             <div class="test justify-content-center">
-               @yield('content')
-
+               {{-- @yield('content')--}}
+                <div class="form-group mt-3">
+                    <label for="">Payment Method</label>
+                    <select name="paymentMethod" id="paymentMethod" class="form-control">
+                        <option disabled selected>-- Select payment method --</option>
+                        <option value="1">COOP Savings</option>
+                        <option value="2">COOP Loans</option>
+                    </select>
+                </div>
+                <div class="form-group mt-3" id="loanPaymentMethod">
+                    @if(!is_null($loanCollection))
+                        <button class="btn btn-primary">Proceed</button>
+                    @endif
+                </div>
+                <div class="form-group mt-3" id="savingPaymentMethod">
+                    @if(!is_null($savingsCollection))
+                        <button class="btn btn-primary">Proceed</button>
+                    @endif
+                </div>
             </div>
         </div>
         <a href="#" class="d-flex my-4 position-relative back return">
