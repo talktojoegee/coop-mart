@@ -249,6 +249,8 @@ class GatewayController extends Controller
         //Init call to COOPFin
         $code = techDecrypt($request->code);
         $purchaseData = PaymentLog::where('code', $code)->orderBy('id', 'desc')->first();
+
+
         $refCode = substr(sha1(time()), 29,40);
         $memberId = Auth::user()->member_id;
         $amount = $purchaseData->total;
