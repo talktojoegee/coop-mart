@@ -39,23 +39,7 @@
     <script src="{{ asset('Modules/Gateway/Resources/assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('Modules/Gateway/Resources/assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('Modules/Gateway/Resources/assets/js/app.min.js') }}"></script>
-    <script>
-        $(document).ready(function(){
-            $('#loanPaymentMethod').hide();
-            $('#savingPaymentMethod').hide();
-            $('#paymentMethod').on('change',function(e){
-                e.preventDefault();
-                let val = $(this).val();
-                if(val === 1){
-                    $('#savingPaymentMethod').show();
-                    $('#loanPaymentMethod').hide();
-                }else if(val === 2){
-                    $('#savingPaymentMethod').hide();
-                    $('#loanPaymentMethod').show();
-                }
-            });
-        });
-    </script>
+
 </body>
 
 </html>
