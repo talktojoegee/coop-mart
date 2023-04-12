@@ -336,4 +336,14 @@ class GatewayController extends Controller
         ]);
 
     }
+
+    public function processCoopSavingsPayment(Request $request){
+        /*
+         * memberId, total, code
+         */
+        $code = $request->code;
+        $memberId = $request->memberId;
+        $total = $request->total;
+        return dd($total);
+    }
 }
