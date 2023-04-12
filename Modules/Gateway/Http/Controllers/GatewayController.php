@@ -253,16 +253,22 @@ class GatewayController extends Controller
         $memberId = Auth::user()->member_id;
         $amount = $purchaseData->total;
         $orderDate = $purchaseData->order_date;
-        $pMethod = 2;
-        $apiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, $pMethod);
-        $collection = null;
-        if($apiResponse->getStatusCode() == 200) {
-            $response_data = json_decode((string)$apiResponse->getBody(), true);
-            $collection = collect($response_data);
+        $savingsApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 1);
+        $loanApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 2);
+        $savingsCollection = null;
+        if($savingsApiResponse->getStatusCode() == 200) {
+            $response_data = json_decode((string)$savingsApiResponse->getBody(), true);
+            $savingsCollection = collect($response_data);
+        }
+        $loanCollection = null;
+        if($loanApiResponse->getStatusCode() == 200) {
+            $response_data = json_decode((string)$loanApiResponse->getBody(), true);
+            $loanCollection = collect($response_data);
         }
         return view("gateway::confirmation",[
             'purchaseData'=>$purchaseData,
-            'collection'=>$collection
+            'savingsCollection'=>$savingsCollection,
+            'loanCollection'=>$loanCollection,
         ]);
     }
 
