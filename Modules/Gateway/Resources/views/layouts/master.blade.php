@@ -32,7 +32,7 @@
         <div>
             {{--@include('gateway::partial.errors')--}}
             <div class="test justify-content-center">
-               {{-- @yield('content')--}}
+                @yield('content')
                 <div class="form-group mt-3">
                     <label for="">Payment Method</label>
                     <select name="paymentMethod" id="paymentMethod" class="form-control">
