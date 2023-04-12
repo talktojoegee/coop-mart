@@ -6,7 +6,7 @@
             <img class="image-2" src="{{ asset('public/dist/img/paystack.png') }}" alt="{{ __('Image') }}" />
         </div>
     </a>
-    <a href="#" class="pay-box">
+    <a href="{{route('coop_savings.confirmation')}}" class="pay-box">
         <div class="grow">
             <img class="image-2" src="{{ asset('public/dist/img/coop.png') }}" alt="{{ __('Image') }}" />
         </div>
