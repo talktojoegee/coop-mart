@@ -4,6 +4,7 @@
     "description": "",
     "keywords": [],
     "priority": 0,
+    "gateway": true,
     "providers": [
         "Modules\\CoopLoan\\Providers\\CoopLoanServiceProvider"
     ],
