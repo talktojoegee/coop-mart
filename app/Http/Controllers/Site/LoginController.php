@@ -133,6 +133,25 @@ class LoginController extends Controller
         }
     }
 
+    /*public function postPaymentNotification(){
+        try{
+            $data = [
+                "refcode"=>"1303692627391",
+                "uid"=>"TEST",
+                "amount"=>25000,
+                "transdate"=>"2020-10-17",
+                "sid"=>"SRVCOOP120",
+                "pmethod"=>2
+            ];
+            $url = "https://www.coopeastngr.com/api/mkpay.asp";
+            $client = new Client();
+            return  $client->request('POST', $url, [
+                'json'=>$data]);
+        }catch (\Exception $exception){
+            return 'exception'.$exception;
+        }
+    }*/
+
     /**
      * Login authenticate operation.
      *
@@ -167,6 +186,7 @@ class LoginController extends Controller
             return 'exception';
         }
     }
+
     public function authenticate(/*AuthUserRequest*/ Request $request)
     {
         $this->validate($request,[

@@ -508,5 +508,5 @@
     <script src="{{ asset('public/dist/js/custom/jquery.blockUI.min.js') }}"></script>
     <script src="{{ asset('public/dist/js/custom/site/checkout.min.js') }}"></script>
     <script src="{{ asset('public/datta-able/plugins/select2/js/select2.full.min.js') }}"></script>
-    <script src="{{ asset('/public/dist/js/custom/site/address.min.js') }}"></script>
+    <script src="{{ asset('public/dist/js/custom/site/address.min.js') }}"></script>
 @endsection
