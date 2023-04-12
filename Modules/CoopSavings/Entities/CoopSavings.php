@@ -10,7 +10,7 @@
 namespace Modules\CoopSavings\Entities;
 
 use Modules\Gateway\Entities\Gateway;
-use Modules\CoopSavings\Scope\PaystackScope;
+use Modules\CoopSavings\Scope\CoopSavingsScope;
 
 class CoopSavings extends Gateway
 {

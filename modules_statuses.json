@@ -34,5 +34,6 @@
     "DirectBankTransfer": true,
     "CheckPayments": true,
     "NGenius": true,
-    "ThankYou": true
+    "ThankYou": true,
+    "CoopLoan": true
 }

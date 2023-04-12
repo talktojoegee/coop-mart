@@ -1,0 +1,13 @@
+{
+    "name": "CoopLoan",
+    "alias": "cooploan",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\CoopLoan\\Providers\\CoopLoanServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
