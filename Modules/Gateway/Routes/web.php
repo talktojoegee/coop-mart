@@ -20,6 +20,7 @@ Route::group([
     'middleware' => ['locale']
 ], function () {
     Route::get('payment/confirmation', 'GatewayController@paymentConfirmation')->name('confirmation');
+    Route::get('payment/coop-savings', 'GatewayController@coopsavingsConfirmation')->name('coop_savings.confirmation');
     Route::get('payment/failed-payment', 'GatewayController@paymentFailed')->name('failed');
     Route::get('/payment', 'GatewayController@paymentGateways')->name('payment');
     Route::get('/payment/{gateway}/pay', 'GatewayController@pay')->name('pay');
