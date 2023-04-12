@@ -1,0 +1,13 @@
+{
+    "name": "CoopSavings",
+    "alias": "coopsavings",
+    "version": "1.0",
+    "gateway": true,
+    "description": "",
+    "keywords": [],
+    "priority": 11,
+    "providers": [],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
