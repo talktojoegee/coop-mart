@@ -3,6 +3,8 @@
 namespace Modules\Gateway\Http\Controllers;
 
 use App\Models\Order;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Auth;
 use Modules\Gateway\Contracts\RequiresWebHookValidationInterface;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
@@ -195,12 +197,73 @@ class GatewayController extends Controller
         return $array;
     }
 
+    public function postPaymentNotification($refCode, $memberId, $amount, $orderDate, $pMethod = 2){
+        try{
+            $data = [
+                "refcode"=>$refCode,
+                "uid"=>$memberId,
+                "amount"=>$amount,
+                "transdate"=>$orderDate,
+                "sid"=>"SRVCOOP120",
+                "pmethod"=>$pMethod
+            ];
+            $url = "https://www.coopeastngr.com/api/mkpay.asp";
+            $client = new Client();
+            return  $client->request('POST', $url, [
+                'json'=>$data]);
+        }catch (\Exception $exception){
+            return 'exception'.$exception;
+        }
+    }
 
     public function paymentConfirmation(Request $request)
     {
+        /*
+         * {"id":3,
+         * "user_id":2,
+         * "reference":"ORD-0003",
+         * "note":null,
+         * "order_date":"2022-12-17",
+         * "currency_id":3,
+         * "leave_door":null,
+         * "other_discount_amount":"0.00000000",
+         * "other_discount_type":null,
+         * "shipping_charge":"2.00000000",
+         * "tax_charge":"1.26500000",
+         * "shipping_title":"Flat Rate",
+         * "total":"28.26500000",
+         * "paid":"0.00000000",
+         * "total_quantity":"1.00000000",
+         * "amount_received":"0.00000000",
+         * "order_status_id":1,
+         * "is_delivery":0,
+         * "payment_status":"Unpaid","created_at":"2022-12-17T01:16:02.000000Z","updated_at":null,"currency":{"id":3,"name":"USD","symbol":"$","exchange_rate":null,"exchange_from":null}}
+         */
+        //Response
+        /*
+         * {"amount":42.02,
+         * "amount_captured":42.02,
+         * "currency":"usd",
+         * "code":"ORD-0002"}
+         */
+        //Init call to COOPFin
         $code = techDecrypt($request->code);
         $purchaseData = PaymentLog::where('code', $code)->orderBy('id', 'desc')->first();
-        return view("gateway::confirmation", compact('purchaseData'));
+        $refCode = substr(sha1(time()), 29,40);
+        $memberId = Auth::user()->member_id;
+        $amount = $purchaseData->total;
+        $orderDate = $purchaseData->order_date;
+        $pMethod = 2;
+        $apiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, $pMethod);
+        $collection = null;
+        if($apiResponse->getStatusCode() == 200) {
+            $response_data = json_decode((string)$apiResponse->getBody(), true);
+            $collection = collect($response_data);
+        }
+        return view("gateway::confirmation",[
+            'purchaseData'=>$purchaseData,
+            'collection'=>$collection
+        ]);
     }
 
     public function paymentFailed(Request $request)

@@ -115,10 +115,10 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        if ($this->c_p_c()) {
+       /* if ($this->c_p_c()) {
             Session::flush();
             return view('errors.installer-error', ['message' => __("This product is facing license validation issue.<br>Please contact admin to fix the issue.")]);
-        }
+        }*/
         $order = [];
         $detailData = [];
         $cartData = Cart::selectedCartCollection();
