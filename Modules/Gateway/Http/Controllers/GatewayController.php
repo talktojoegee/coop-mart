@@ -3,6 +3,7 @@
 namespace Modules\Gateway\Http\Controllers;
 
 use App\Models\Order;
+use App\Services\Product\AddToCartService;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 use Modules\Gateway\Contracts\RequiresWebHookValidationInterface;
@@ -369,7 +370,7 @@ class GatewayController extends Controller
                             $req = $this->sendAPIRequest($extUrl, json_encode($form));
                             try {
                                 if($req->getStatusCode() == 200) {
-                                    $response_data = json_decode((string)$req->getBody(), true);
+                                    $response_data = json_decode($req->getBody(), true);
                                     $collection = collect($response_data);
                                     return dd($collection);
                                 }
@@ -385,7 +386,7 @@ class GatewayController extends Controller
                             $req = $this->sendAPIRequest($extUrl, json_encode($form));
                             try {
                                 if($req->getStatusCode() == 200) {
-                                    $response_data = json_decode((string)$req->getBody(), true);
+                                    $response_data = json_decode($req->getBody(), true);
                                     $collection = collect($response_data);
                                     return dd($collection);
                                 }
