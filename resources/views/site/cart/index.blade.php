@@ -440,7 +440,7 @@
                                         {{ __('Accepted payment method') }}</h3>
                                     <div class="flex flex-wrap gap-x-6 gap-y-2 mt-5 mb-5">
                                         <div>
-                                            <img class="w-16 h-7 m-auto object-contain" src="{{ asset('dist/img/payment_methods.png') }}" alt="{{ __('Image') }}">
+                                            <img class="w-16 h-7 m-auto object-contain" src="{{ asset('public/dist/img/payment_methods.png') }}" alt="{{ __('Image') }}">
                                         </div>
                                         {{--@foreach ($gateways as $gateway)
                                         <div>

@@ -473,18 +473,21 @@
                                 @php
                                     $gateways = (new \Modules\Gateway\Entities\GatewayModule())->payableGateways();
                                 @endphp
-                                @if(is_array($gateways) && count($gateways) > 0)
+                                {{--@if(is_array($gateways) && count($gateways) > 0)--}}
                                     <div>
                                         <h3 class="font-medium dm-sans text-sm text-gray-10 my-6">{{ __('Accepted payment method') }}</h3>
                                         <div class="flex flex-wrap gap-x-6 gap-y-2">
-                                            @foreach ($gateways as $gateway)
+                                            <div>
+                                                <img class="w-16 h-7 m-auto object-contain" src="{{ asset('public/dist/img/payment_methods.png') }}" alt="{{ __('Image') }}">
+                                            </div>
+                                           {{-- @foreach ($gateways as $gateway)
                                                 <div>
                                                     <img src="{{ asset(config($gateway->alias . '.logo')) }}" alt="{{ __('Image') }}" class="w-16 h-7 object-contain m-auto">
                                                 </div>
-                                            @endforeach
+                                            @endforeach--}}
                                         </div>
                                     </div>
-                                @endif
+                                {{--@endif--}}
                             </div>
                         </div>
                     </div>
