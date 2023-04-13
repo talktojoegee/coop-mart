@@ -400,7 +400,7 @@ class GatewayController extends Controller
                 switch ($payment_method){
                     case 'savings':
                         $savingsApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 1);
-                        if($savingsApiResponse->getStatusCode() == 200) {
+                        if($savingsApiResponse['code'] == 0) {
                             $req = $this->sendAPIRequest($extUrl, json_encode($form));
                             try {
                                 if($req) {
@@ -417,11 +417,16 @@ class GatewayController extends Controller
                             }catch(\Exception $exception){
                                 //return dd($exception);
                             }
+                        }else{
+                            return view("gateway::display-message",[
+                                'message'=>"Whoops! Could not process transaction. Try again later.",
+                                'status'=>400
+                            ]);
                         }
                         break;
                     case 'loan':
                         $loanApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 2);
-                        if($loanApiResponse->getStatusCode() == 200) {
+                        if($loanApiResponse['code'] == 0) {
                             $req = $this->sendAPIRequest($extUrl, json_encode($form));
                             try {
                                 if($req) {
@@ -439,6 +444,11 @@ class GatewayController extends Controller
                                 session()->flash('error', "Something went wrong. Try again later");
                                 return back();
                             }
+                        }else{
+                            return view("gateway::display-message",[
+                                'message'=>"Whoops! Could not process transaction. Try again later.",
+                                'status'=>400
+                            ]);
                         }
                         break;
                     case 'paystack':

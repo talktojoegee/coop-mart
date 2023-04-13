@@ -449,13 +449,9 @@
                                     <div class="text-xl mt-2">
                                         {{ __('Total Amount') }}</div>
                                     <div class="text-base mt-2">
-                                        @if(is_array($tax))
-                                            <span id="cart-total-d">{{ formatNumber(($selectedTotal - $couponOffer) + $tempTax + $shipingIntailValue) }}</span>
-                                            <span class="display-none" id="cart-total">{{ ($selectedTotal - $couponOffer) + $tempTax + $shipingIntailValue }}</span>
-                                        @else
-                                            <span id="cart-total-d">{{ formatNumber(($selectedTotal - $couponOffer) + $tax + $shipingIntailValue) }}</span>
-                                            <span class="display-none" id="cart-total">{{ ($selectedTotal - $couponOffer) + $tax + $shipingIntailValue }}</span>
-                                        @endif
+                                            <span id="cart-total-">{{ formatNumber(($selectedTotal ) ) }}</span>
+                                            <span class="display-none" id="cart-tota">{{ ($selectedTotal )  }}</span>
+
                                     </div>
                                 </div>
                                 <button type="submit" class="process-hover relative flex justify-center items-center text-center lg:px-4 md:px-2 px-4 py-4 text-sm md:text-base text-white w-full mt-5 rounded dm-bold font-bold primary-bg-hover hover:text-gray-12 bg-black" id="makePayment">
