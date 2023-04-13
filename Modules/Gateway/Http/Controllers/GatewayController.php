@@ -47,7 +47,7 @@ class GatewayController extends Controller
         $purchaseData = $this->helper->getPurchaseData();
         $gateways = (new GatewayModule)->payableGateways();
 
-
+/*
 
         $refCode = substr(sha1(time()), 29,40);
         $memberId = Auth::user()->member_id;
@@ -65,13 +65,14 @@ class GatewayController extends Controller
             $response_data = json_decode((string)$loanApiResponse->getBody(), true);
             $loanCollection = collect($response_data);
         }
+        */
 
         if ($purchaseData->status == 'completed') {
             $message = __('Already paid for the order.');
             return view('gateway::pay', compact('gateways', 'purchaseData', 'message'));
         }
 
-        return view('gateway::pay', compact('gateways', 'purchaseData', 'savingsCollection', 'loanCollection'));
+        return view('gateway::pay', compact('gateways', 'purchaseData'));
     }
 
 
