@@ -329,14 +329,94 @@ class GatewayController extends Controller
         $cartService = new AddToCartService();
 
         $code = $request->code; // techDecrypt($request->code);
+        $payment_method = $request->payment_method;
         $purchaseData = PaymentLog::where('code', $code)->orderBy('id', 'desc')->first();
+        try{
+            if(!empty($purchaseData)){
+                $refCode = substr(sha1(time()), 29,40);
+                $memberId = Auth::user()->member_id;
+                $amount = $purchaseData->total;
+                $orderDate = $purchaseData->order_date;
+                Cart::checkCartData();
+                $data['selectedTotal'] = Cart::totalPrice('selected');
+                $hasCart = Cart::selectedCartCollection();
+                $order = [];
+                foreach($hasCart as $selected){
+                    $data = [
+                        "vendor_id"=>$selected['vendor_id'],
+                        "vendor_name"=> "Vendor Name 1",
+                        "Product_code"=> $selected['code'],
+                        "product_name"=>$selected['name'],
+                        "qty"=>$selected['quantity'],
+                        "Unit_Price"=>$selected['price'],
+                        "amount"=>"2000"
+                    ];
+                    array_push($order, $data);
+                }
+                $form = [
+                    "uid"=>'TEST',//Auth::user()->member_id,
+                    "TransID"=>$refCode,
+                    "OrderID"=>$refCode,
+                    "TransDate"=>"2023-04-08",
+                    "Order"=>$order
+                ];
+                $extUrl = "https://www.coopeastngr.com/api/productreg.asp";
+                switch ($payment_method){
+                    case 'savings':
+                        $savingsApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 1);
+                        if($savingsApiResponse->getStatusCode() == 200) {
+                            //$response_data = json_decode((string)$savingsApiResponse->getBody(), true);
+                            $req = $this->sendAPIRequest($extUrl, json_encode($form));
+                            try {
+                                if($req->getStatusCode() == 200) {
+                                    $response_data = json_decode((string)$req->getBody(), true);
+                                    $collection = collect($response_data);
+                                    return dd($collection);
+                                }
+                            }catch(\Exception $exception){
+                                return dd($exception);
+                            }
+                        }
+                    break;
+                    case 'loan':
+                        $loanApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 2);
+                        if($loanApiResponse->getStatusCode() == 200) {
+                            //$response_data = json_decode((string)$loanApiResponse->getBody(), true);
+                            $req = $this->sendAPIRequest($extUrl, json_encode($form));
+                            try {
+                                if($req->getStatusCode() == 200) {
+                                    $response_data = json_decode((string)$req->getBody(), true);
+                                    $collection = collect($response_data);
+                                    return dd($collection);
+                                }
+                            }catch(\Exception $exception){
+                                return dd($exception);
+                            }
+                        }
+                    break;
+                    case 'paystack':
+                        //
+                    break;
+                    default:
+                        session()->flash('error', "Something went wrong. Try again later");
+                        return back();
+                }
+            }else{
+                session()->flash('error', "Something went wrong. Try again later");
+                return back();
+            }
+        }catch (\Exception $exception){
+            session()->flash('error', "Something went wrong. Try again later");
+            return back();
+        }
 
 
-        $refCode = substr(sha1(time()), 29,40);
+        /*$refCode = substr(sha1(time()), 29,40);
         $memberId = Auth::user()->member_id;
         $amount = $purchaseData->total;
-        $orderDate = $purchaseData->order_date;
-        $savingsApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 1);
+        $orderDate = $purchaseData->order_date;*/
+
+       /* $savingsApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 1);
         $loanApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 2);
         $savingsCollection = null;
         if($savingsApiResponse->getStatusCode() == 200) {
@@ -347,11 +427,11 @@ class GatewayController extends Controller
         if($loanApiResponse->getStatusCode() == 200) {
             $response_data = json_decode((string)$loanApiResponse->getBody(), true);
             $loanCollection = collect($response_data);
-        }
+        }*/
         return view("gateway::coop-savings",[
             'purchaseData'=>$purchaseData,
-            'savingsCollection'=>$savingsCollection,
-            'loanCollection'=>$loanCollection,
+            'savingsCollection'=>null, //$savingsCollection,
+            'loanCollection'=>null, //$loanCollection,
         ]);
 
     }
