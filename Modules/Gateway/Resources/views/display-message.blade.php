@@ -1,4 +1,4 @@
-@extends('gateway::layouts.master')
+@extends('gateway::layouts.message')
 
 @section('content')
     <div class="row">
