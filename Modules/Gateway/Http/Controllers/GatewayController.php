@@ -18,7 +18,8 @@ use Modules\Gateway\Facades\GatewayHandler;
 use Modules\Gateway\Redirect\GatewayRedirect;
 use Modules\Gateway\Services\GatewayHelper;
 use Modules\Gateway\Traits\ApiResponse;
-
+use Cart;
+use Cache;
 class GatewayController extends Controller
 {
     use ApiResponse;
@@ -235,6 +236,17 @@ class GatewayController extends Controller
         }
     }
 
+    public function sendAPIRequest($url, $data){
+        try{
+
+            $client = new Client();
+            return  $client->request('POST', $url, [
+                'json'=>$data]);
+        }catch (\Exception $exception){
+            return 'exception'.$exception;
+        }
+    }
+
     public function paymentConfirmation(Request $request)
     {
         /*
@@ -309,6 +321,13 @@ class GatewayController extends Controller
 
     public function coopsavingsConfirmation(Request $request){
 
+        Cart::checkCartData();
+        $data['selectedTotal'] = Cart::totalPrice('selected');
+        $hasCart = Cart::selectedCartCollection();
+        $shipping = 0;
+        $tax = 0;
+        $cartService = new AddToCartService();
+
         $code = $request->code; // techDecrypt($request->code);
         $purchaseData = PaymentLog::where('code', $code)->orderBy('id', 'desc')->first();
 
@@ -341,9 +360,79 @@ class GatewayController extends Controller
         /*
          * memberId, total, code
          */
+        Cart::checkCartData();
+        $data['selectedTotal'] = Cart::totalPrice('selected');
+        $hasCart = Cart::selectedCartCollection();
+        $shipping = 0;
+        $tax = 0;
+        //$cartService = new AddToCartService();
+        $order = [];
+        foreach($hasCart as $selected){
+           $data = [
+               "vendor_id"=>$selected['vendor_id'],
+                "vendor_name"=> "Vendor Name 1",
+                "Product_code"=> $selected['code'],
+                "product_name"=>$selected['name'],
+                "qty"=>$selected['quantity'],
+                "Unit_Price"=>$selected['price'],
+                "amount"=>"2000"
+           ];
+           array_push($order, $data);
+        }
+        $form = [
+            "uid"=>1,//Auth::user()->member_id,
+            "TransID"=>rand(100,1000),
+            "OrderID"=>rand(10,1000),
+            "TransDate"=>"2023-04-08",
+            "Order"=>$order
+        ];
+        $extUrl = "https://www.coopeastngr.com/api/productreg.asp";
+        $req = $this->sendAPIRequest($extUrl, json_encode($form));
+        try {
+            if($req->getStatusCode() == 200) {
+                $response_data = json_decode((string)$req->getBody(), true);
+                $collection = collect($response_data);
+                return dd($collection);
+            }
+        }catch(\Exception $exception){
+            return dd($exception);
+        }
+
+        /*
+        return dd($order);
         $code = $request->code;
         $memberId = $request->memberId;
         $total = $request->total;
-        return dd($total);
+        return dd($total);*/
+    }
+
+    public function getPurchaseData($code){
+        return PaymentLog::where('code', $code)->orderBy('id', 'desc')->first();
     }
 }
+
+/*
+ * {"id":2,
+ * "user_id":2,
+ * "reference":"ORD-0002",
+ * "note":null,
+ * "order_date":"2022-12-17",
+ * "currency_id":3,
+ * "leave_door":null,
+ * "other_discount_amount":"0.00000000",
+ * "other_discount_type":null,
+ * "shipping_charge":"0.00000000",
+ * "tax_charge":"2.02400000",
+ * "shipping_title":"Local Pickup",
+ * "total":"42.02400000",
+ * "paid":"0.00000000",
+ * "total_quantity":"1.00000000",
+ * "amount_received":"0.00000000",
+ * "order_status_id":1,
+ * "is_delivery":0,
+ * "payment_status":"Unpaid",
+ * "created_at":"2022-12-17T01:04:02.000000Z",
+ * "updated_at":null,
+ * "currency":{"id":3,"name":"USD","symbol":"$","exchange_rate":null,"exchange_from":null}
+ * }
+ */
