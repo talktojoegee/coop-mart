@@ -238,11 +238,36 @@ class GatewayController extends Controller
     }
 
     public function sendAPIRequest($url, $data){
-        try{
 
-            $client = new Client();
+        try{
+            $curl = curl_init();
+
+            //$channel = 'dnd';
+
+            //$sender = 'N-Alert';
+
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => $url,
+                //CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_SSL_VERIFYPEER => 0,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_POSTFIELDS =>$data,
+                CURLOPT_HTTPHEADER => array(
+                    'Content-Type: application/json'
+                ),
+            ));
+
+            return curl_exec($curl);
+
+            curl_close($curl);
+            /*$client = new Client();
             return  $client->request('POST', $url, [
-                'json'=>$data]);
+                'json'=>$data]);*/
         }catch (\Exception $exception){
             return 'exception'.$exception;
         }
@@ -354,12 +379,21 @@ class GatewayController extends Controller
                     ];
                     array_push($order, $data);
                 }
+                $or = [
+                    "vendor_id"=>22,
+                    "vendor_name"=> "Vendor Name 1",
+                    "Product_code"=> 'code',
+                    "product_name"=>'p name',
+                    "qty"=>2,
+                    "Unit_Price"=>4,
+                    "amount"=>"2000",
+                ];
                 $form = [
                     "uid"=>'TEST',//Auth::user()->member_id,
                     "TransID"=>$refCode,
                     "OrderID"=>$refCode,
                     "TransDate"=>"2023-04-08",
-                    "Order"=>$order
+                    "Order"=>[$or],//$order
                 ];
                 $extUrl = "https://www.coopeastngr.com/api/productreg.asp";
                 switch ($payment_method){
@@ -378,26 +412,33 @@ class GatewayController extends Controller
                                 return dd($exception);
                             }
                         }
-                    break;
+                        break;
                     case 'loan':
+                        //return dd(json_encode($form));
                         $loanApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 2);
                         if($loanApiResponse->getStatusCode() == 200) {
-                            //$response_data = json_decode((string)$loanApiResponse->getBody(), true);
                             $req = $this->sendAPIRequest($extUrl, json_encode($form));
                             try {
-                                if($req->getStatusCode() == 200) {
-                                    $response_data = json_decode($req->getBody(), true);
-                                    $collection = collect($response_data);
-                                    return dd($collection);
+                                if($req) {
+                                    return view("gateway::display-message",[
+                                        'message'=>"Congratulations! Your transaction was successful.",
+                                        'status'=>200
+                                    ]);
+                                }else{
+                                    return view("gateway::display-message",[
+                                        'message'=>"Whoops! Something went wrong. Try again later",
+                                        'status'=>400
+                                    ]);
                                 }
                             }catch(\Exception $exception){
-                                return dd($exception);
+                                session()->flash('error', "Something went wrong. Try again later");
+                                return back();
                             }
                         }
-                    break;
+                        break;
                     case 'paystack':
                         //
-                    break;
+                        break;
                     default:
                         session()->flash('error', "Something went wrong. Try again later");
                         return back();
@@ -417,18 +458,18 @@ class GatewayController extends Controller
         $amount = $purchaseData->total;
         $orderDate = $purchaseData->order_date;*/
 
-       /* $savingsApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 1);
-        $loanApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 2);
-        $savingsCollection = null;
-        if($savingsApiResponse->getStatusCode() == 200) {
-            $response_data = json_decode((string)$savingsApiResponse->getBody(), true);
-            $savingsCollection = collect($response_data);
-        }
-        $loanCollection = null;
-        if($loanApiResponse->getStatusCode() == 200) {
-            $response_data = json_decode((string)$loanApiResponse->getBody(), true);
-            $loanCollection = collect($response_data);
-        }*/
+        /* $savingsApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 1);
+         $loanApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 2);
+         $savingsCollection = null;
+         if($savingsApiResponse->getStatusCode() == 200) {
+             $response_data = json_decode((string)$savingsApiResponse->getBody(), true);
+             $savingsCollection = collect($response_data);
+         }
+         $loanCollection = null;
+         if($loanApiResponse->getStatusCode() == 200) {
+             $response_data = json_decode((string)$loanApiResponse->getBody(), true);
+             $loanCollection = collect($response_data);
+         }*/
         return view("gateway::coop-savings",[
             'purchaseData'=>$purchaseData,
             'savingsCollection'=>null, //$savingsCollection,
@@ -449,16 +490,16 @@ class GatewayController extends Controller
         //$cartService = new AddToCartService();
         $order = [];
         foreach($hasCart as $selected){
-           $data = [
-               "vendor_id"=>$selected['vendor_id'],
+            $data = [
+                "vendor_id"=>$selected['vendor_id'],
                 "vendor_name"=> "Vendor Name 1",
                 "Product_code"=> $selected['code'],
                 "product_name"=>$selected['name'],
                 "qty"=>$selected['quantity'],
                 "Unit_Price"=>$selected['price'],
                 "amount"=>"2000"
-           ];
-           array_push($order, $data);
+            ];
+            array_push($order, $data);
         }
         $form = [
             "uid"=>1,//Auth::user()->member_id,
