@@ -400,21 +400,25 @@ class GatewayController extends Controller
                     case 'savings':
                         $savingsApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 1);
                         if($savingsApiResponse->getStatusCode() == 200) {
-                            //$response_data = json_decode((string)$savingsApiResponse->getBody(), true);
                             $req = $this->sendAPIRequest($extUrl, json_encode($form));
                             try {
-                                if($req->getStatusCode() == 200) {
-                                    $response_data = json_decode($req->getBody(), true);
-                                    $collection = collect($response_data);
-                                    return dd($collection);
+                                if($req) {
+                                    return view("gateway::display-message",[
+                                        'message'=>"Congratulations! Your transaction was successful.",
+                                        'status'=>200
+                                    ]);
+                                }else{
+                                    return view("gateway::display-message",[
+                                        'message'=>"Whoops! Something went wrong. Try again later",
+                                        'status'=>400
+                                    ]);
                                 }
                             }catch(\Exception $exception){
-                                return dd($exception);
+                                //return dd($exception);
                             }
                         }
                         break;
                     case 'loan':
-                        //return dd(json_encode($form));
                         $loanApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 2);
                         if($loanApiResponse->getStatusCode() == 200) {
                             $req = $this->sendAPIRequest($extUrl, json_encode($form));
@@ -514,7 +518,7 @@ class GatewayController extends Controller
             if($req->getStatusCode() == 200) {
                 $response_data = json_decode((string)$req->getBody(), true);
                 $collection = collect($response_data);
-                return dd($collection);
+                //return dd($collection);
             }
         }catch(\Exception $exception){
             return dd($exception);
