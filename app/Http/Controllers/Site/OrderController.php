@@ -84,9 +84,9 @@ class OrderController extends Controller
 
         if (is_array($hasCart) && count($hasCart) > 0) {
 
-            if (pageReload()) {
+            /*if (pageReload()) {
                 $cartService->destroySessionAddress();
-            }
+            }*/
 
             $taxShipping = $cartService->getTaxShipping();
             $data['addresses'] = Address::getAll()->where('user_id', Auth::user()->id);
@@ -99,7 +99,7 @@ class OrderController extends Controller
             if (isActive('Coupon')) {
                 $data['coupon'] = Cart::getCouponData();
             }
-            $cartService->destroySessionAddress();
+            //$cartService->destroySessionAddress();
 
             return view('site.order.checkout', $data);
         }
