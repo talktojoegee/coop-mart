@@ -26,12 +26,12 @@
 
         </div>
     </div>
-    <a href="#" class="d-flex my-4 position-relative back return">
+    <a href="{{route('site.cart')}}" class="d-flex my-4 position-relative back return">
         <svg class="return-arrow position-absolute" xmlns="http://www.w3.org/2000/svg" width="15"
              height="10" viewBox="0 0 15 10" fill="none">
             <path fill-rule="evenodd" clip-rule="evenodd"
                   d="M4.70711 0L6.12132 1.41421L3.82843 3.70711H13.4142C13.9665 3.70711 14.4142 4.15482 14.4142 4.70711C14.4142 5.25939 13.9665 5.70711 13.4142 5.70711H3.82843L6.12132 8L4.70711 9.41421L0 4.70711L4.70711 0Z" fill="currentColor" />
-        </svg> {{ __('Close') }}</a>
+        </svg> {{ __('Back to cart') }}</a>
 
 </section>
 <script src="{{ asset('Modules/Gateway/Resources/assets/js/jquery.min.js') }}"></script>
