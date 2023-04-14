@@ -387,10 +387,10 @@ class GatewayController extends Controller
                             array_push($orders, $data);
                         }
                         $form = [
-                            "uid"=>'TEST',//Auth::user()->member_id,
+                            "uid"=>Auth::user()->member_id ?? 'TEST',
                             "TransID"=>$refCode,
                             "OrderID"=>$refCode,
-                            "TransDate"=>"2023-04-08",
+                            "TransDate"=>date('Y-m-d') ?? "2023-04-08",
                             "Order"=>$orders
                         ];
                         $extUrl = "https://www.coopeastngr.com/api/productreg.asp";
