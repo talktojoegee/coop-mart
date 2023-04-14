@@ -204,7 +204,9 @@ class LoginController extends Controller
         ];
         $sid = '999999';
         $response = $this->memberLoginValidation($request->email, $sid, $request->password);
-        if($response->getStatusCode() == 200){
+        $response_data =  json_decode((string) $response->getBody(), true);
+        $collection = collect($response_data);
+        if($collection['response'] == 200){
             $response_data =  json_decode((string) $response->getBody(), true);
             $collection = collect($response_data);
             $email =  $collection['email'];
@@ -287,7 +289,7 @@ class LoginController extends Controller
 
         }else{
             (new ActivityLogService())->userLogin('failed', 'Incorrect');
-            return ['status' => 0, 'message' => __('Record not found')];
+            return ['status' => 0, 'message' => __('Record not found or invalid login details.')];
         }
     }
 
