@@ -1018,4 +1018,9 @@ class Product extends Model
 
         return null;
     }
+
+
+    public static function getProductById($productId){
+        return Product::find($productId);
+    }
 }
