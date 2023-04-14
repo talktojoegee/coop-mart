@@ -5,7 +5,7 @@ namespace Modules\Gateway\Http\Controllers;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Product;
-use App\Models\Vendor;
+use App\Models\Vendor as VendorModel;
 use App\Services\Product\AddToCartService;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
@@ -279,34 +279,6 @@ class GatewayController extends Controller
 
     public function paymentConfirmation(Request $request)
     {
-        /*
-         * {"id":3,
-         * "user_id":2,
-         * "reference":"ORD-0003",
-         * "note":null,
-         * "order_date":"2022-12-17",
-         * "currency_id":3,
-         * "leave_door":null,
-         * "other_discount_amount":"0.00000000",
-         * "other_discount_type":null,
-         * "shipping_charge":"2.00000000",
-         * "tax_charge":"1.26500000",
-         * "shipping_title":"Flat Rate",
-         * "total":"28.26500000",
-         * "paid":"0.00000000",
-         * "total_quantity":"1.00000000",
-         * "amount_received":"0.00000000",
-         * "order_status_id":1,
-         * "is_delivery":0,
-         * "payment_status":"Unpaid","created_at":"2022-12-17T01:16:02.000000Z","updated_at":null,"currency":{"id":3,"name":"USD","symbol":"$","exchange_rate":null,"exchange_from":null}}
-         */
-        //Response
-        /*
-         * {"amount":42.02,
-         * "amount_captured":42.02,
-         * "currency":"usd",
-         * "code":"ORD-0002"}
-         */
         //Init call to COOPFin
         $code = techDecrypt($request->code);
         $purchaseData = PaymentLog::where('code', $code)->orderBy('id', 'desc')->first();
@@ -351,13 +323,13 @@ class GatewayController extends Controller
 
     public function coopsavingsConfirmation(Request $request){
 
-        Cart::checkCartData();
+       /* Cart::checkCartData();
         $data['selectedTotal'] = \App\Cart\Cart::totalPrice('selected'); // Cart::totalPrice('selected');
         $selectedCarts = \App\Cart\Cart::getSelected();// Cart::getSelected() ?? [];
         $hasCart = \App\Cart\Cart::selectedCartCollection();
         //$shipping = 0;
         //$tax = 0;
-        //$cartService = new AddToCartService();
+        //$cartService = new AddToCartService();*/
 
         $code = $request->code; // techDecrypt($request->code);
         $payment_method = $request->payment_method;
@@ -373,7 +345,7 @@ class GatewayController extends Controller
                     $orderDetails = OrderDetail::where('order_id', $userOrder->id)->get();
                     if(count($orderDetails) > 0){
                         foreach($orderDetails as $detail){
-                            $vendor = Vendor::getVendorById($detail->vendor_id);
+                            $vendor = VendorModel::getVendorById($detail->vendor_id);
                             $product = Product::getProductById($detail->product_id);
                             $data = [
                                 "vendor_id"=>$detail->vendor_id,
@@ -387,7 +359,7 @@ class GatewayController extends Controller
                             array_push($orders, $data);
                         }
                         $form = [
-                            "uid"=>Auth::user()->member_id ?? 'TEST',
+                            "uid"=>$memberId ?? 'TEST',
                             "TransID"=>$refCode,
                             "OrderID"=>$refCode,
                             "TransDate"=>date('Y-m-d') ?? "2023-04-08",
@@ -403,10 +375,12 @@ class GatewayController extends Controller
                                     $req = $this->sendAPIRequest($extUrl, json_encode($form));
                                     try {
                                         if($req) {
+                                           // \App\Cart\Cart::selectedCartProductDestroy();
                                             return view("gateway::display-message",[
                                                 'message'=>"Congratulations! Your transaction was successful.",
                                                 'status'=>200
                                             ]);
+
                                         }else{
                                             return view("gateway::display-message",[
                                                 'message'=>"Whoops! Something went wrong. Try again later",
