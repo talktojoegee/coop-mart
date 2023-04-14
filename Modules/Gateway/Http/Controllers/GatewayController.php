@@ -368,10 +368,12 @@ class GatewayController extends Controller
                                         if($req) {
                                            // \App\Cart\Cart::selectedCartProductDestroy();
                                             $this->updateOrderStatus($code, 'Paid');
-                                            return view("gateway::display-message",[
+                                            session()->flash("success", "Congratulations! Your transaction was successful.");
+                                            return redirect()->route('site.order');
+                                           /* return view("gateway::display-message",[
                                                 'message'=>"Congratulations! Your transaction was successful.",
                                                 'status'=>200
-                                            ]);
+                                            ]);*/
 
                                         }else{
                                             return view("gateway::display-message",[
@@ -500,6 +502,7 @@ class GatewayController extends Controller
     public function updateOrderStatus($code, $status){
         $userOrder = Order::where('reference', $code)->first();
         $userOrder->payment_status = $status;
+        $userOrder->order_status_id = 4; //complete
         $userOrder->save();
     }
 }
