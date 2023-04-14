@@ -326,7 +326,7 @@ class OrderController extends Controller
                     }
 
                     DB::commit();
-                    Cart::selectedCartProductDestroy();
+                    //Cart::selectedCartProductDestroy();
 
                     if ($latestOrder->total <= 0) {
                         $route = $this->orderWithoutPayment($latestOrder->reference);
