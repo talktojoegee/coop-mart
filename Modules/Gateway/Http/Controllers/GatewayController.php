@@ -398,10 +398,12 @@ class GatewayController extends Controller
                                     try {
                                         if($req) {
                                             $this->updateOrderStatus($code, 'Paid');
-                                            return view("gateway::display-message",[
+                                            session()->flash("success", "Congratulations! Your transaction was successful.");
+                                            return redirect()->route('site.order');
+                                            /*return view("gateway::display-message",[
                                                 'message'=>"Congratulations! Your transaction was successful.",
                                                 'status'=>200
-                                            ]);
+                                            ]);*/
                                         }else{
                                             return view("gateway::display-message",[
                                                 'message'=>"Whoops! Something went wrong. Try again later",
