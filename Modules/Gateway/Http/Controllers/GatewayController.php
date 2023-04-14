@@ -322,16 +322,7 @@ class GatewayController extends Controller
 
 
     public function coopsavingsConfirmation(Request $request){
-
-       /* Cart::checkCartData();
-        $data['selectedTotal'] = \App\Cart\Cart::totalPrice('selected'); // Cart::totalPrice('selected');
-        $selectedCarts = \App\Cart\Cart::getSelected();// Cart::getSelected() ?? [];
-        $hasCart = \App\Cart\Cart::selectedCartCollection();
-        //$shipping = 0;
-        //$tax = 0;
-        //$cartService = new AddToCartService();*/
-
-        $code = $request->code; // techDecrypt($request->code);
+        $code = $request->code;
         $payment_method = $request->payment_method;
         $purchaseData = PaymentLog::where('code', $code)->orderBy('id', 'desc')->first();
         try{
@@ -376,6 +367,7 @@ class GatewayController extends Controller
                                     try {
                                         if($req) {
                                            // \App\Cart\Cart::selectedCartProductDestroy();
+                                            $this->updateOrderStatus($code, 'Paid');
                                             return view("gateway::display-message",[
                                                 'message'=>"Congratulations! Your transaction was successful.",
                                                 'status'=>200
@@ -405,6 +397,7 @@ class GatewayController extends Controller
                                     $req = $this->sendAPIRequest($extUrl, json_encode($form));
                                     try {
                                         if($req) {
+                                            $this->updateOrderStatus($code, 'Paid');
                                             return view("gateway::display-message",[
                                                 'message'=>"Congratulations! Your transaction was successful.",
                                                 'status'=>200
@@ -445,30 +438,6 @@ class GatewayController extends Controller
             session()->flash('error', "Something went wrong. Try again later");
             return back();
         }
-
-
-        /*$refCode = substr(sha1(time()), 29,40);
-        $memberId = Auth::user()->member_id;
-        $amount = $purchaseData->total;
-        $orderDate = $purchaseData->order_date;*/
-
-        /* $savingsApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 1);
-         $loanApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 2);
-         $savingsCollection = null;
-         if($savingsApiResponse->getStatusCode() == 200) {
-             $response_data = json_decode((string)$savingsApiResponse->getBody(), true);
-             $savingsCollection = collect($response_data);
-         }
-         $loanCollection = null;
-         if($loanApiResponse->getStatusCode() == 200) {
-             $response_data = json_decode((string)$loanApiResponse->getBody(), true);
-             $loanCollection = collect($response_data);
-         }*/
-        /* return view("gateway::coop-savings",[
-             'purchaseData'=>$purchaseData,
-             'savingsCollection'=>null, //$savingsCollection,
-             'loanCollection'=>null, //$loanCollection,
-         ]);*/
 
     }
 
@@ -525,30 +494,11 @@ class GatewayController extends Controller
     public function getPurchaseData($code){
         return PaymentLog::where('code', $code)->orderBy('id', 'desc')->first();
     }
+
+    public function updateOrderStatus($code, $status){
+        $userOrder = Order::where('reference', $code)->first();
+        $userOrder->payment_status = $status;
+        $userOrder->save();
+    }
 }
 
-/*
- * {"id":2,
- * "user_id":2,
- * "reference":"ORD-0002",
- * "note":null,
- * "order_date":"2022-12-17",
- * "currency_id":3,
- * "leave_door":null,
- * "other_discount_amount":"0.00000000",
- * "other_discount_type":null,
- * "shipping_charge":"0.00000000",
- * "tax_charge":"2.02400000",
- * "shipping_title":"Local Pickup",
- * "total":"42.02400000",
- * "paid":"0.00000000",
- * "total_quantity":"1.00000000",
- * "amount_received":"0.00000000",
- * "order_status_id":1,
- * "is_delivery":0,
- * "payment_status":"Unpaid",
- * "created_at":"2022-12-17T01:04:02.000000Z",
- * "updated_at":null,
- * "currency":{"id":3,"name":"USD","symbol":"$","exchange_rate":null,"exchange_from":null}
- * }
- */
