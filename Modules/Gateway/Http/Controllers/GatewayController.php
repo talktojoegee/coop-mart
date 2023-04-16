@@ -7,6 +7,7 @@ use App\Models\OrderDetail;
 use App\Models\Product;
 use App\Models\Vendor as VendorModel;
 use App\Services\Product\AddToCartService;
+use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 use Modules\Gateway\Contracts\RequiresWebHookValidationInterface;
@@ -24,6 +25,8 @@ use Modules\Gateway\Services\GatewayHelper;
 use Modules\Gateway\Traits\ApiResponse;
 use Cart;
 use Cache;
+use Yabacon\Paystack;
+
 class GatewayController extends Controller
 {
     use ApiResponse;
@@ -33,6 +36,7 @@ class GatewayController extends Controller
     public function __construct()
     {
         $this->helper = GatewayHelper::getInstance();
+        $this->cartService = new AddToCartService();
     }
 
 
@@ -329,6 +333,7 @@ class GatewayController extends Controller
             if(!empty($purchaseData)){
                 $refCode = substr(sha1(time()), 29,40);
                 $memberId = Auth::user()->member_id;
+                $email = Auth::user()->email;
                 $amount = $purchaseData->total;
                 $orders = [];
                 $userOrder = Order::where('reference', $code)->first();
@@ -351,8 +356,8 @@ class GatewayController extends Controller
                         }
                         $form = [
                             "uid"=>$memberId ?? 'TEST',
-                            "TransID"=>$refCode,
-                            "OrderID"=>$refCode,
+                            "TransID"=> $refCode,
+                            "OrderID"=> $code, //$refCode,
                             "TransDate"=>date('Y-m-d') ?? "2023-04-08",
                             "Order"=>$orders
                         ];
@@ -363,17 +368,15 @@ class GatewayController extends Controller
                                 $resp_data = json_decode((string)$savingsApiResponse->getBody(), true);
                                 $savingsCollection = collect($resp_data);
                                 if($savingsCollection['code'] == 0) {
+                                    $form['TransID'] = $savingsCollection['TransID'];
                                     $req = $this->sendAPIRequest($extUrl, json_encode($form));
                                     try {
                                         if($req) {
                                            // \App\Cart\Cart::selectedCartProductDestroy();
+                                            //$this->cartService->destroySessionAddress();
                                             $this->updateOrderStatus($code, 'Paid');
                                             session()->flash("success", "Congratulations! Your transaction was successful.");
                                             return redirect()->route('site.order');
-                                           /* return view("gateway::display-message",[
-                                                'message'=>"Congratulations! Your transaction was successful.",
-                                                'status'=>200
-                                            ]);*/
 
                                         }else{
                                             return view("gateway::display-message",[
@@ -396,16 +399,13 @@ class GatewayController extends Controller
                                 $response_data = json_decode((string)$loanApiResponse->getBody(), true);
                                 $loanCollection = collect($response_data);
                                 if($loanCollection['code'] == 0) {
+                                    $form['TransID'] = $loanCollection['TransID'];
                                     $req = $this->sendAPIRequest($extUrl, json_encode($form));
                                     try {
                                         if($req) {
                                             $this->updateOrderStatus($code, 'Paid');
                                             session()->flash("success", "Congratulations! Your transaction was successful.");
                                             return redirect()->route('site.order');
-                                            /*return view("gateway::display-message",[
-                                                'message'=>"Congratulations! Your transaction was successful.",
-                                                'status'=>200
-                                            ]);*/
                                         }else{
                                             return view("gateway::display-message",[
                                                 'message'=>"Whoops! Something went wrong. Try again later",
@@ -424,7 +424,10 @@ class GatewayController extends Controller
                                 }
                                 break;
                             case 'paystack':
-                                //
+                                $this->chargeCard($amount, $form, $email);
+                                // $formData = $tranx->data->metadata->order;
+                                //                $charge = $tranx->data->metadata->charge;
+                                //                $amount = $tranx->data->amount;
                                 break;
                             default:
                                 session()->flash('error', "Something went wrong. Try again later");
@@ -504,6 +507,57 @@ class GatewayController extends Controller
         $userOrder->payment_status = $status;
         $userOrder->order_status_id = 4; //complete
         $userOrder->save();
+    }
+
+    public function chargeCard($amount, $data, $email){
+            try{
+                $paystack = new Paystack(env('PAYSTACK_SECRET_KEY'));
+                $builder = new Paystack\MetadataBuilder();
+                $builder->withTransaction(3);
+                $builder->withOrder($data);
+                $charge = ceil($amount*0.015);
+                $builder->withCharge($charge);
+                $metadata = $builder->build();
+                $tranx = $paystack->transaction->initialize([
+                    'amount'=>($amount+$charge)*100,       // in kobo
+                    'email'=>$email,         // unique to customers
+                    'reference'=>substr(sha1(time()),23,40), // unique to transactions
+                    'metadata'=>$metadata
+                ]);
+                return redirect()->to($tranx->data->authorization_url)->send();
+            }catch (Paystack\Exception\ApiException $exception){
+                session()->flash("error", "Whoops! Something went wrong. Try again.");
+                return back();
+            }
+    }
+
+    public function processOnlinePayment(Request $request){
+        $reference = isset($request->reference) ? $request->reference : '';
+        if(!$reference){
+            die('No reference supplied');
+        }
+        $paystack = new Paystack(env('PAYSTACK_SECRET_KEY'));
+        try {
+            $tranx = $paystack->transaction->verify([
+                'reference'=>$reference, // unique to transactions
+            ]);
+        }catch (Paystack\Exception\ApiException $exception){
+            session()->flash("error", "Whoops! Something went wrong.");
+            return abort(404);
+        }
+        if ($tranx->data->status  === 'success') {
+            try {
+                $formData = $tranx->data->metadata->order;
+                $charge = $tranx->data->metadata->charge;
+                $amount = $tranx->data->amount;
+
+
+
+            }catch (Paystack\Exception\ApiException $ex){
+
+            }
+
+        }
     }
 }
 

@@ -206,7 +206,7 @@ class LoginController extends Controller
         $response = $this->memberLoginValidation($request->email, $sid, $request->password);
         $response_data =  json_decode((string) $response->getBody(), true);
         $collection = collect($response_data);
-        if($collection['response'] == 200){
+        if($collection['response'] == '200: OK'){
             $response_data =  json_decode((string) $response->getBody(), true);
             $collection = collect($response_data);
             $email =  $collection['email'];

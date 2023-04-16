@@ -29,6 +29,7 @@
         "razorpay/razorpay": "2.*",
         "spatie/laravel-activitylog": "^4.7.2",
         "stripe/stripe-php": "^7.100",
+        "yabacon/paystack-php": "^2.2",
         "yajra/laravel-datatables": "^1.5"
     },
     "require-dev": {
