@@ -372,9 +372,10 @@ class GatewayController extends Controller
                                     $req = $this->sendAPIRequest($extUrl, json_encode($form));
                                     try {
                                         if($req) {
-                                           // \App\Cart\Cart::selectedCartProductDestroy();
-                                            //$this->cartService->destroySessionAddress();
+
+
                                             $this->updateOrderStatus($code, 'Paid');
+                                            \App\Cart\Cart::selectedCartProductDestroy();
                                             session()->flash("success", "Congratulations! Your transaction was successful.");
                                             return redirect()->route('site.order');
 
@@ -405,6 +406,7 @@ class GatewayController extends Controller
                                         if($req) {
                                             $this->updateOrderStatus($code, 'Paid');
                                             session()->flash("success", "Congratulations! Your transaction was successful.");
+                                            \App\Cart\Cart::selectedCartProductDestroy();
                                             return redirect()->route('site.order');
                                         }else{
                                             return view("gateway::display-message",[

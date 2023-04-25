@@ -44,6 +44,8 @@
             </svg> {{ __('Close') }}</a>
 
     </section>
+
+    @yield('modal')
     <script>
         var response = {
             status: "failed",
