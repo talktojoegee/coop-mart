@@ -359,6 +359,7 @@ class GatewayController extends Controller
                             "TransID"=> $refCode,
                             "OrderID"=> $code, //$refCode,
                             "TransDate"=>date('Y-m-d') ?? "2023-04-08",
+                            "PaymentMode"=>ucfirst($payment_method),
                             "Order"=>$orders
                         ];
                         $extUrl = "https://www.coopeastngr.com/api/productreg.asp";
@@ -570,11 +571,11 @@ class GatewayController extends Controller
                     "Order"=>$order
                 ];
 
-                $loanApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 3);
+               /* $loanApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 3);
                 $response_data = json_decode((string)$loanApiResponse->getBody(), true);
                 $loanCollection = collect($response_data);
-                if($loanCollection['code'] == 0) {
-                    $form['TransID'] = $loanCollection['TransID'];
+                if($loanCollection['code'] == 0) {*/
+                    //$form['TransID'] = $refCode; // $loanCollection['TransID'];
                     $req = $this->sendAPIRequest($extUrl, json_encode($form));
                     try {
                         if($req) {
@@ -592,12 +593,12 @@ class GatewayController extends Controller
                         session()->flash('error', "Something went wrong. Try again later");
                         return back();
                     }
-                }else{
+               /* }else{
                     return view("gateway::display-message",[
                         'message'=>"Whoops! {$loanCollection['response']}",
                         'status'=>400
                     ]);
-                }
+                }*/
 
             }catch (Paystack\Exception\ApiException $ex){
 
