@@ -75,7 +75,7 @@ class WithdrawalHistoryDataTable extends DataTable
             ->addColumn(['data' => 'transaction_type', 'name' => 'transaction_type', 'title' => __('Type')])
             ->addColumn(['data' => 'transaction_date', 'name' => 'transaction_date', 'title' => __('Date')])
             ->addColumn(['data' => 'updated_at', 'name' => 'updated_at', 'title' => __('Updated At')])
-            ->addColumn(['data' => 'status', 'name' => 'status', 'title' => __('Status')])
+            //->addColumn(['data' => 'status', 'name' => 'status', 'title' => __('Status')])
 
             ->parameters(dataTableOptions());
     }

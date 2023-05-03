@@ -120,7 +120,7 @@ class ProductDataTable extends DataTable
             ->addColumn(['data' => 'vendor', 'name' => 'vendor', 'title' => __('Vendor'), 'orderable' => false])
             ->addColumn(['data' => 'stock', 'name' => 'total_stocks', 'title' => __('Stock')])
             ->addColumn(['data' => 'brand', 'name' => 'brand', 'title' => __('Brand'), 'orderable' => false])
-            ->addColumn(['data' => 'status', 'name' => 'status', 'title' => __('Status')])
+            //->addColumn(['data' => 'status', 'name' => 'status', 'title' => __('Status')])
             ->parameters(dataTableOptions());
     }
 }

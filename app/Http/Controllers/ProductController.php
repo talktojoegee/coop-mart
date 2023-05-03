@@ -31,10 +31,10 @@ class ProductController extends Controller
      */
     public function index(ProductDataTable $dataTable)
     {
-        if ($this->ncpc()) {
+/*        if ($this->ncpc()) {
             Session::flush();
             return view('errors.installer-error', ['message' => __("This product is facing license validation issue.<br>Please verify your purchase code from <a style=\"color:#fcca19\" href=\"" . route('purchase-code-check', ['bypass' => 'purchase_code']) . "\">here</a>.")]);
-        }
+        }*/
         $data['productBrands'] = Product::join("brands", "products.brand_id", "brands.id")
             ->selectRaw("brands.name, brands.id")
             ->distinct()

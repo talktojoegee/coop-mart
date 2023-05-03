@@ -84,12 +84,12 @@ class VendorTransactionDataTable extends DataTable
             ->addColumn(['data' => 'currency.name', 'name' => 'currency.name', 'title' => __('Currency')])
             ->addColumn(['data' => 'withdrawal_method.method_name', 'name' => 'withdrawalMethod.method_name', 'title' => __('Method')])
             ->addColumn(['data' => 'amount', 'name' => 'amount', 'title' => __('Amount')])
-            ->addColumn(['data' => 'charge_amount', 'name' => 'charge_amount', 'title' => __('Fees')])
-            ->addColumn(['data' => 'discount_amount', 'name' => 'discount_amount', 'title' => __('Discount')])
-            ->addColumn(['data' => 'total_amount', 'name' => 'total_amount', 'title' => __('Total')])
+            //->addColumn(['data' => 'charge_amount', 'name' => 'charge_amount', 'title' => __('Fees')])
+            //->addColumn(['data' => 'discount_amount', 'name' => 'discount_amount', 'title' => __('Discount')])
+            //->addColumn(['data' => 'total_amount', 'name' => 'total_amount', 'title' => __('Total')])
             ->addColumn(['data' => 'transaction_type', 'name' => 'transaction_type', 'title' => __('Type')])
             ->addColumn(['data' => 'status', 'name' => 'status', 'title' => __('Status')])
-            ->addColumn(['data' => 'transaction_date', 'name' => 'transaction_date', 'title' => __('Date')])
+            //->addColumn(['data' => 'transaction_date', 'name' => 'transaction_date', 'title' => __('Date')])
             ->parameters(dataTableOptions());
     }
 }

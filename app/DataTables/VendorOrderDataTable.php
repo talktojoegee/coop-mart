@@ -89,7 +89,7 @@ class VendorOrderDataTable extends DataTable
 
             ->addColumn(['data' => 'status', 'name' => 'orderStatus.name', 'title' => __('Status')])
 
-            ->addColumn(['data' => 'payment_status', 'name' => 'payment_status', 'title' => __('Payment Status')])
+            //->addColumn(['data' => 'payment_status', 'name' => 'payment_status', 'title' => __('Payment Status')])
 
             ->addColumn(['data' => 'created_at', 'name' => 'created_at', 'title' => __('Created at')])
 

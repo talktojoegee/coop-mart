@@ -95,7 +95,7 @@ class OrderDataTable extends DataTable
 
             ->addColumn(['data' => 'total', 'name' => 'total', 'title' => __('Total')])
 
-            ->addColumn(['data' => 'status', 'name' => 'orderStatus.name', 'title' => __('Order Status')])
+            //->addColumn(['data' => 'status', 'name' => 'orderStatus.name', 'title' => __('Order Status')])
 
             ->addColumn(['data' => 'payment_status', 'name' => 'payment_status', 'title' => __('Payment Status')])
 
