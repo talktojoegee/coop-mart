@@ -91,16 +91,16 @@ class TransactionListDataTable extends DataTable
             ->addColumn(['data' => 'user.name', 'name' => 'user.name', 'title' => __('Payer')])
             ->addColumn(['data' => 'vendor.name', 'name' => 'vendor.name', 'title' => __('Vendor')])
             ->addColumn(['data' => 'currency.name', 'name' => 'currency.name', 'title' => __('Currency')])
-            ->addColumn(['data' => 'withdrawal_method.method_name', 'name' => 'withdrawalMethod.method_name', 'title' => __('Method')])
+            /*->addColumn(['data' => 'withdrawal_method.method_name', 'name' => 'withdrawalMethod.method_name', 'title' => __('Method')])*/
             ->addColumn(['data' => 'amount', 'name' => 'amount', 'title' => __('Amount')])
-            ->addColumn(['data' => 'discount_amount', 'name' => 'discount_amount', 'title' => __('Discount')])
+            //->addColumn(['data' => 'discount_amount', 'name' => 'discount_amount', 'title' => __('Discount')])
             ->addColumn(['data' => 'total_amount', 'name' => 'total_amount', 'title' => __('Total')])
             ->addColumn(['data' => 'transaction_type', 'name' => 'transaction_type', 'title' => __('Type')])
-            ->addColumn(['data' => 'status', 'name' => 'status', 'title' => __('Status')])
-            ->addColumn(['data' => 'transaction_date', 'name' => 'transaction_date', 'title' => __('Date')])
-            ->addColumn(['data'=> 'action', 'name' => 'action', 'title' => __('Action'), 'width' => '5%',
-            'visible' => $this->hasPermission(['App\Http\Controllers\TransactionController@edit']),
-            'orderable' => false, 'searchable' => false])
+            //->addColumn(['data' => 'status', 'name' => 'status', 'title' => __('Status')])
+            //->addColumn(['data' => 'transaction_date', 'name' => 'transaction_date', 'title' => __('Date')])
+            /* ->addColumn(['data'=> 'action', 'name' => 'action', 'title' => __('Action'), 'width' => '5%',
+             'visible' => $this->hasPermission(['App\Http\Controllers\TransactionController@edit']),
+             'orderable' => false, 'searchable' => false])*/
             ->parameters(dataTableOptions());
     }
 }

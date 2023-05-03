@@ -426,7 +426,7 @@ class GatewayController extends Controller
                                 }
                                 break;
                             case 'paystack':
-                                $this->chargeCard($amount, $form, $email);
+                                $processedPayment = $this->chargeCard($amount, $form, $email, $code, $userOrder->order_date);
                                 // $formData = $tranx->data->metadata->order;
                                 //                $charge = $tranx->data->metadata->charge;
                                 //                $amount = $tranx->data->amount;
@@ -511,7 +511,7 @@ class GatewayController extends Controller
         $userOrder->save();
     }
 
-    public function chargeCard($amount, $data, $email){
+    public function chargeCard($amount, $data, $email, $orderCode, $orderDate){
             try{
                 $paystack = new Paystack(env('PAYSTACK_SECRET_KEY'));
                 $builder = new Paystack\MetadataBuilder();
@@ -519,6 +519,8 @@ class GatewayController extends Controller
                 $builder->withOrder($data);
                 $charge = ceil($amount*0.015);
                 $builder->withCharge($charge);
+                $builder->withOrderCode($orderCode);
+                $builder->withOrderDate($orderDate);
                 $metadata = $builder->build();
                 $tranx = $paystack->transaction->initialize([
                     'amount'=>($amount+$charge)*100,       // in kobo
@@ -549,16 +551,60 @@ class GatewayController extends Controller
         }
         if ($tranx->data->status  === 'success') {
             try {
-                $formData = $tranx->data->metadata->order;
+
+
+                $extUrl = "https://www.coopeastngr.com/api/productreg.asp";
+                $refCode = substr(sha1(time()), 29,40);
+                $memberId = Auth::user()->member_id;
+                $order = $tranx->data->metadata->order;
+                $orderCode = $tranx->data->metadata->order_code;
+                $orderDate = $tranx->data->metadata->order_date;
                 $charge = $tranx->data->metadata->charge;
                 $amount = $tranx->data->amount;
 
+                $form = [
+                    "uid"=>$memberId ?? 'TEST',
+                    "TransID"=> $refCode,
+                    "OrderID"=> $orderCode, //$refCode,
+                    "TransDate"=>date('Y-m-d') ?? "2023-04-08",
+                    "Order"=>$order
+                ];
 
+                $loanApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 3);
+                $response_data = json_decode((string)$loanApiResponse->getBody(), true);
+                $loanCollection = collect($response_data);
+                if($loanCollection['code'] == 0) {
+                    $form['TransID'] = $loanCollection['TransID'];
+                    $req = $this->sendAPIRequest($extUrl, json_encode($form));
+                    try {
+                        if($req) {
+                            $this->updateOrderStatus($orderCode, 'Paid');
+                            session()->flash("success", "Congratulations! Your transaction was successful.");
+                            \App\Cart\Cart::selectedCartProductDestroy();
+                            return redirect()->route('site.order');
+                        }else{
+                            return view("gateway::display-message",[
+                                'message'=>"Whoops! Something went wrong. Try again later",
+                                'status'=>400
+                            ]);
+                        }
+                    }catch(\Exception $exception){
+                        session()->flash('error', "Something went wrong. Try again later");
+                        return back();
+                    }
+                }else{
+                    return view("gateway::display-message",[
+                        'message'=>"Whoops! {$loanCollection['response']}",
+                        'status'=>400
+                    ]);
+                }
 
             }catch (Paystack\Exception\ApiException $ex){
 
             }
 
+        }else{
+            abort(404);
         }
     }
 }
