@@ -359,7 +359,7 @@ class GatewayController extends Controller
                             "TransID"=> $refCode,
                             "OrderID"=> $code, //$refCode,
                             "TransDate"=>date('Y-m-d') ?? "2023-04-08",
-                            "PaymentMode"=>ucfirst($payment_method),
+                            //"PaymentMode"=>ucfirst($payment_method),
                             "Order"=>$orders
                         ];
                         $extUrl = "https://www.coopeastngr.com/api/productreg.asp";
@@ -370,6 +370,7 @@ class GatewayController extends Controller
                                 $savingsCollection = collect($resp_data);
                                 if($savingsCollection['code'] == 0) {
                                     $form['TransID'] = $savingsCollection['TransID'];
+                                    $form['PaymentMode'] = 'Savings';
                                     $req = $this->sendAPIRequest($extUrl, json_encode($form));
                                     try {
                                         if($req) {
@@ -402,6 +403,7 @@ class GatewayController extends Controller
                                 $loanCollection = collect($response_data);
                                 if($loanCollection['code'] == 0) {
                                     $form['TransID'] = $loanCollection['TransID'];
+                                    $form['PaymentMode'] = 'Loans';
                                     $req = $this->sendAPIRequest($extUrl, json_encode($form));
                                     try {
                                         if($req) {
@@ -575,7 +577,7 @@ class GatewayController extends Controller
         }
         if ($tranx->data->status  === 'success') {
             try {
-
+return dd($tranx->data->metadata);
 
                 $extUrl = "https://www.coopeastngr.com/api/productreg.asp";
                 $refCode = substr(sha1(time()), 29,40);
