@@ -25,7 +25,7 @@
                 // Default content
                 $arr = ['Center' => "top: 50%; left: 50%; transform: translate(-50%, -50%);", 'Top Left' => "top: 0; left: 0;", 'Top Right' => "top: 0; right: 0;", 'Bottom Left' => "bottom: 0; left: 0;", 'Bottom Right' => "bottom: 0; right: 0;"];
 
-                $style = "height: {$content->height}px; width: {$content->width}px;";
+                $style = "height: {$content->height}px; width: 1210px;";
                 $style .= $arr[$content->position];
                 if ($content->background == 'Color') {
                     $style .= "background: {$content->popup_bg_color};";
