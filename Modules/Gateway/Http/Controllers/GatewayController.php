@@ -577,12 +577,12 @@ class GatewayController extends Controller
         }
         if ($tranx->data->status  === 'success') {
             try {
-return dd($tranx->data->metadata);
+//return dd($tranx->data->metadata);
 
                 $extUrl = "https://www.coopeastngr.com/api/productreg.asp";
                 $refCode = substr(sha1(time()), 29,40);
                 $memberId = Auth::user()->member_id;
-                $order = $tranx->data->metadata->order;
+                $order = $tranx->data->metadata->order->Order;
                 $orderCode = $tranx->data->metadata->order_code;
                 $orderDate = $tranx->data->metadata->order_date;
                 $charge = $tranx->data->metadata->charge;
@@ -593,8 +593,10 @@ return dd($tranx->data->metadata);
                     "TransID"=> $refCode,
                     "OrderID"=> $orderCode, //$refCode,
                     "TransDate"=>date('Y-m-d') ?? "2023-04-08",
-                    "Order"=>$order
+                    "PaymentMode"=>'Paystack',
+                    "Order"=>$order,
                 ];
+
 
                /* $loanApiResponse = $this->postPaymentNotification($refCode, $memberId, $amount, $orderDate, 3);
                 $response_data = json_decode((string)$loanApiResponse->getBody(), true);
