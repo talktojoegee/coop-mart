@@ -519,9 +519,12 @@ class GatewayController extends Controller
                 $builder->withTransaction(3);
                 $builder->withOrder($data);
 
-                $charge = ceil($amount*0.015) + 100;
+                $charge = $amount*0.015 + 100;
                 if($charge > 2000){
                     $charge = 2000;
+                }
+                if($charge < 2500){
+                    $charge = $amount * 0.015;
                 }
 
                 $builder->withCharge($charge);
