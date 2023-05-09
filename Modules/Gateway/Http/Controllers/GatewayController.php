@@ -518,7 +518,12 @@ class GatewayController extends Controller
                 $builder = new Paystack\MetadataBuilder();
                 $builder->withTransaction(3);
                 $builder->withOrder($data);
-                $charge = ceil($amount*0.015);
+
+                $charge = ceil($amount*0.015) + 100;
+                if($charge > 2000){
+                    $charge = 2000;
+                }
+
                 $builder->withCharge($charge);
                 $builder->withOrderCode($orderCode);
                 $builder->withOrderDate($orderDate);
