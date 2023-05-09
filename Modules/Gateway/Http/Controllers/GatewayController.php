@@ -518,11 +518,9 @@ class GatewayController extends Controller
                 $builder = new Paystack\MetadataBuilder();
                 $builder->withTransaction(3);
                 $builder->withOrder($data);
-                $amt = ($amount * 100)/98.5;
-                $onlineCharge = $amt - $amount;
+                $onlineCharge = ($amount * 100)/98.5;
+                $onlineCharge = $onlineCharge - $amount;
                 if($amount >= 2500){
-                    // x_OnlineCharge = cdbl(x_OnlineCharge) + 1.5
-                    //        x_OnlineCharge = cdbl(x_OnlineCharge) + 100
                     $onlineCharge = $onlineCharge + 1.5;
                     $onlineCharge = $onlineCharge + 100;
                 }
