@@ -518,7 +518,19 @@ class GatewayController extends Controller
                 $builder = new Paystack\MetadataBuilder();
                 $builder->withTransaction(3);
                 $builder->withOrder($data);
-                $onlineCharge = ($amount * 100)/98.5;
+
+                $amountCharge = number_format(($amount * 100)/98.5,2); //Amount plus charge
+                $charge = $amountCharge - $amount;
+                if($amount >= 2500){
+                    $charge = ($charge + 1.5)+100;
+                }
+                $charge = $charge + 0.03;
+                if($charge > 2000){
+                    $charge = 2000;
+                }
+
+                /*
+                 * $onlineCharge = ($amount * 100)/98.5;
                 $onlineCharge = $onlineCharge - $amount;
                 if($amount >= 2500){
                     $onlineCharge = $onlineCharge + 1.5;
@@ -528,20 +540,14 @@ class GatewayController extends Controller
                 if($onlineCharge > 2000){
                     $onlineCharge = 2000;
                 }
-                /*$charge = $amount*0.015 + 100;
-                if($charge > 2000){
-                    $charge = 2000;
-                }
-                if($charge < 2500){
-                    $charge = $amount * 0.015; //98.5
-                }*/
+                 */
 
-                $builder->withCharge($onlineCharge);
+                $builder->withCharge($charge);
                 $builder->withOrderCode($orderCode);
                 $builder->withOrderDate($orderDate);
                 $metadata = $builder->build();
                 $tranx = $paystack->transaction->initialize([
-                    'amount'=>($amount+$onlineCharge)*100,       // in kobo
+                    'amount'=>($amount+$charge)*100,       // in kobo
                     'email'=>$email,         // unique to customers
                     'reference'=>substr(sha1(time()),23,40), // unique to transactions
                     'metadata'=>$metadata
